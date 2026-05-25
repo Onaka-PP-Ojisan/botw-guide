@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ブレワイ攻略ガイド｜素材・装備・料理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F0E8;
+    --bg-soft: #EFE8DC;
+    --bg-card: #FBF7F0;
+    --ink: #1C1917;
+    --ink-soft: #44403C;
+    --ink-mute: #78716C;
+    --line: #E0D6C5;
+    --accent: #D97757;
+    --accent-soft: #E89B7E;
+    --accent-deep: #B85A3E;
+    --good: #5C8A6E;
+    --bad: #B85A5A;
+    --caution: #C89B5A;
+    --serif: 'Lora', 'Noto Serif JP', serif;
+    --sans: 'DM Sans', 'Noto Sans JP', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.75;
+    font-size: 16px;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(217, 119, 87, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(217, 119, 87, 0.04) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(245, 240, 232, 0.85);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+    padding: 16px 0;
+  }
+
+  .header-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+  .brand .accent { color: var(--accent); }
+
+  nav {
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    color: var(--ink-mute);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--accent-deep);
+    background: rgba(217, 119, 87, 0.08);
+  }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero {
+    margin-bottom: 80px;
+    animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(217, 119, 87, 0.08);
+    border: 1px solid rgba(217, 119, 87, 0.2);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent-deep);
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 620px;
+  }
+
+  .hero-toc {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .toc-card {
+    padding: 16px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.2s ease;
+  }
+  .toc-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .toc-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .toc-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .toc-desc {
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+
+  section {
+    margin-bottom: 80px;
+    animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    scroll-margin-top: 80px;
+  }
+
+  .section-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin: 36px 0 16px;
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h3::before {
+    content: '◆';
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  h4 {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    margin: 24px 0 10px;
+  }
+
+  p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .lead {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+
+  /* タブ */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    margin: 24px 0 20px;
+    flex-wrap: wrap;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tab-btn {
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  .tab-btn:hover {
+    color: var(--accent-deep);
+  }
+  .tab-btn.active {
+    background: rgba(217, 119, 87, 0.1);
+    color: var(--accent-deep);
+    border-color: rgba(217, 119, 87, 0.3);
+  }
+
+  /* 武器種別バッジ */
+  .badge-onehand { background: rgba(184, 130, 90, 0.18); color: #8B5A1F; }
+  .badge-twohand { background: rgba(140, 70, 70, 0.15); color: #7A2D2D; }
+  .badge-spear { background: rgba(80, 110, 150, 0.15); color: #2A4F7A; }
+  .badge-special { background: rgba(140, 100, 180, 0.15); color: #6B4D9E; }
+
+  /* 武器詳細スペック表 */
+  .weapon-spec {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 8px 0;
+    padding: 8px 10px;
+    background: rgba(217, 119, 87, 0.04);
+    border-radius: 6px;
+  }
+  .spec-item {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .spec-label {
+    color: var(--ink-mute);
+    margin-right: 6px;
+  }
+  .spec-value {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .spec-attack { color: var(--accent-deep); }
+
+  /* サブタブ（料理カテゴリ用） */
+  .subtabs {
+    display: flex;
+    gap: 6px;
+    margin: 16px 0 20px;
+    flex-wrap: wrap;
+  }
+  .subtab-btn {
+    padding: 5px 12px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-mute);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  .subtab-btn:hover {
+    color: var(--accent-deep);
+    border-color: var(--accent);
+  }
+  .subtab-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  /* カード */
+  .item-grid {
+    display: grid;
+    gap: 10px;
+  }
+
+  .item-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: opacity 0.2s ease;
+  }
+
+  .item-card.hidden {
+    display: none;
+  }
+
+  .item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .item-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  .badge-sell { background: rgba(92, 138, 110, 0.15); color: var(--good); }
+  .badge-caution { background: rgba(200, 155, 90, 0.18); color: var(--caution); }
+  .badge-keep { background: rgba(184, 90, 90, 0.15); color: var(--bad); }
+  .badge-S { background: rgba(217, 119, 87, 0.15); color: var(--accent-deep); }
+  .badge-A { background: rgba(92, 138, 110, 0.15); color: var(--good); }
+  .badge-B { background: rgba(120, 113, 108, 0.15); color: var(--ink-mute); }
+  .badge-must { background: rgba(217, 119, 87, 0.15); color: var(--accent-deep); }
+  .badge-attack { background: rgba(184, 90, 90, 0.15); color: var(--bad); }
+  .badge-defense { background: rgba(80, 130, 180, 0.15); color: #2A6B9C; }
+  .badge-resist { background: rgba(92, 138, 110, 0.15); color: var(--good); }
+  .badge-utility { background: rgba(140, 100, 180, 0.15); color: #6B4D9E; }
+  .badge-heal { background: rgba(184, 90, 90, 0.15); color: var(--bad); }
+  .badge-stamina { background: rgba(80, 150, 130, 0.15); color: #1F7A6B; }
+  .badge-stealth { background: rgba(100, 100, 130, 0.15); color: #4D4D6B; }
+
+  .item-detail {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .item-meta {
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .item-mat {
+    font-size: 13px;
+    background: rgba(217, 119, 87, 0.05);
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .item-mat::before {
+    content: '🍳';
+    margin-right: 6px;
+    filter: grayscale(0.3);
+  }
+
+  .item-loc::before {
+    content: '📍';
+    margin-right: 4px;
+    filter: grayscale(0.3);
+  }
+
+  /* 補足ボックス */
+  .info-box {
+    background: linear-gradient(135deg, rgba(217, 119, 87, 0.08), rgba(217, 119, 87, 0.02));
+    border: 1px solid rgba(217, 119, 87, 0.2);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .info-box-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-deep);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .info-box p {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  .info-box p:last-child { margin-bottom: 0; }
+
+  .stage-info {
+    font-size: 14px;
+    padding: 12px 16px;
+    background: rgba(217, 119, 87, 0.06);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  /* 区切り */
+  .divider {
+    text-align: center;
+    margin: 50px 0;
+    color: var(--line);
+    letter-spacing: 1em;
+    font-size: 14px;
+  }
+
+  /* フッター */
+  footer {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 40px 32px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-mute);
+    position: relative;
+    z-index: 2;
+  }
+
+  footer p { font-size: 13px; margin-bottom: 6px; }
+
+  .empty-msg {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ink-mute);
+    font-size: 14px;
+  }
+
+  /* アニメーション */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 720px) {
+    main { padding: 40px 20px 70px; }
+    .header-inner { padding: 0 20px; }
+    nav { display: none; }
+    h2 { font-size: 26px; }
+    .hero h1 { font-size: 30px; }
+    .tab-btn { padding: 6px 12px; font-size: 12px; }
+    footer { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">BotW <span class="accent">Field Guide</span></div>
+    <nav>
+      <a href="#materials" class="nav-link">素材</a>
+      <a href="#equipment" class="nav-link">装備</a>
+      <a href="#cooking" class="nav-link">料理</a>
+      <a href="#tips" class="nav-link">テクニック</a>
+      <a href="#dragons" class="nav-link">ドラゴン</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <div class="hero-tag">FIELD GUIDE / 2026年版</div>
+    <h1>ブレワイを<em>もっと深く</em>。<br>素材・装備・料理の<br>実用ガイド。</h1>
+    <p class="hero-sub">素材を売るべきか温存するべきか。装備の優先度は何か。料理は進行度ごとに何を作るべきか——ハイラルを冒険するために必要な実践情報を、3つのセクションに整理しました。</p>
+
+    <div class="hero-toc">
+      <a href="#materials" class="toc-card">
+        <span class="toc-num">01</span>
+        <div class="toc-title">素材売却ガイド</div>
+        <div class="toc-desc">何を売って何を取っておくか</div>
+      </a>
+      <a href="#equipment" class="toc-card">
+        <span class="toc-num">02</span>
+        <div class="toc-title">装備リスト</div>
+        <div class="toc-desc">防具・武器・弓・盾のおすすめ</div>
+      </a>
+      <a href="#cooking" class="toc-card">
+        <span class="toc-num">03</span>
+        <div class="toc-title">料理レシピ</div>
+        <div class="toc-desc">序盤・中盤・終盤×カテゴリ別</div>
+      </a>
+          <a href="#tips" class="toc-card">
+        <span class="toc-num">04</span>
+        <div class="toc-title">テクニック集</div>
+        <div class="toc-desc">知って得する小技・立ち回り</div>
+      </a>
+      <a href="#dragons" class="toc-card">
+        <span class="toc-num">05</span>
+        <div class="toc-title">ドラゴン素材周回</div>
+        <div class="toc-desc">3龍の出現場所と効率周回</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 素材セクション -->
+  <section id="materials">
+    <span class="section-num">01 / MATERIALS</span>
+    <h2>素材：売っていいもの、ダメなもの</h2>
+    <p class="lead">ブレワイは敵から直接ルピーが落ちないため、素材売却が金策の中心です。ただし「これだけは売るな」というアイテムが少数あります。基本は「足りなくなったらまた集める」スタンスでOKです。</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-mat-filter="all">すべて</button>
+      <button class="tab-btn" data-mat-filter="sell">売ってOK</button>
+      <button class="tab-btn" data-mat-filter="caution">注意</button>
+      <button class="tab-btn" data-mat-filter="keep">売却NG</button>
+    </div>
+
+    <div id="mat-content">
+      <h4 class="mat-heading">鉱石・宝石</h4>
+      <div class="item-grid mat-group">
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">琥珀（コハク）</span><span class="badge badge-sell">売ってOK｜30R</span></div><div class="item-detail">装飾品の素材だが必要数少なく入手量も多い。序盤の金策に最適。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">オパール</span><span class="badge badge-sell">売ってOK｜60R</span></div><div class="item-detail">入手量が多く、装飾品強化用途も限定的。積極的に売却。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">ルビー</span><span class="badge badge-sell">売ってOK｜210R</span></div><div class="item-detail">炎装飾品の素材。3〜4個確保したらあとは売ってOK。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">サファイア</span><span class="badge badge-sell">売ってOK｜260R</span></div><div class="item-detail">氷装飾品の素材。3〜4個確保したらあとは売却可。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">トパーズ</span><span class="badge badge-sell">売ってOK｜180R</span></div><div class="item-detail">雷装飾品の素材。確保後は売却可。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">夜光石</span><span class="badge badge-caution">注意｜70R</span></div><div class="item-detail">ダイヤモンドと交換可（10個=1個）。鉱床から大量入手できるので余剰分は売却可。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">ダイヤモンド</span><span class="badge badge-caution">注意｜500R</span></div><div class="item-detail">英傑武器の修復素材。3〜5個は確保推奨。終盤は売却OK。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">火打ち石</span><span class="badge badge-sell">売ってOK｜5R</span></div><div class="item-detail">焚火着火用に数個だけ残せばOK。鉱床から量産可能。</div></div>
+      </div>
+
+      <h4 class="mat-heading">古代素材</h4>
+      <div class="item-grid mat-group">
+        <div class="item-card" data-cat="keep"><div class="item-head"><span class="item-name">古代のシャフト</span><span class="badge badge-keep">売却NG｜15R</span></div><div class="item-detail">古代兵装の矢・装備作成に必須。プルア強化にも使用。</div></div>
+        <div class="item-card" data-cat="keep"><div class="item-head"><span class="item-name">古代のコア</span><span class="badge badge-keep">売却NG｜80R</span></div><div class="item-detail">古代兵装作成・強化の最重要素材。絶対売るな。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">古代のネジ</span><span class="badge badge-caution">注意｜12R</span></div><div class="item-detail">古代兵装の素材。15個ほど確保後は余剰分売却OK。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">古代のバネ</span><span class="badge badge-caution">注意｜15R</span></div><div class="item-detail">古代兵装の素材。確保後は売却可。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">古代の歯車</span><span class="badge badge-caution">注意｜30R</span></div><div class="item-detail">古代兵装の素材。確保後は売却可。</div></div>
+      </div>
+
+      <h4 class="mat-heading">食材・モンスター素材</h4>
+      <div class="item-grid mat-group">
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">生肉／極上ケモノ肉</span><span class="badge badge-sell">売ってOK｜6〜25R</span></div><div class="item-detail">料理にして売ると2〜10倍の価値。素材のままより料理推奨。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">リンゴ・ナッツ類</span><span class="badge badge-sell">売ってOK｜3〜8R</span></div><div class="item-detail">どこでも採れる。料理素材か換金で消費。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">ボコブリン系の素材</span><span class="badge badge-sell">売ってOK｜2〜30R</span></div><div class="item-detail">雑魚敵から大量に入手。余ったら売却。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">リザルフォス系の素材</span><span class="badge badge-sell">売ってOK｜5〜100R</span></div><div class="item-detail">量産しやすい。お金に困ったら売却。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">モリブリン系の素材</span><span class="badge badge-caution">注意｜8〜120R</span></div><div class="item-detail">防具強化で使う。少しは確保推奨。</div></div>
+        <div class="item-card" data-cat="keep"><div class="item-head"><span class="item-name">ライネルの素材</span><span class="badge badge-keep">売却NG｜50〜150R</span></div><div class="item-detail">蛮族シリーズなど高位防具の強化に必要。売るな。</div></div>
+      </div>
+
+      <h4 class="mat-heading">ドラゴン素材・特殊素材</h4>
+      <div class="item-grid mat-group">
+        <div class="item-card" data-cat="keep"><div class="item-head"><span class="item-name">ドラゴンの角・爪・牙</span><span class="badge badge-keep">売却NG｜150〜300R</span></div><div class="item-detail">料理で耐性30分付与の最強素材。祠出現にも使う。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">ドラゴンのウロコ</span><span class="badge badge-caution">注意｜20R</span></div><div class="item-detail">簡単に再入手可能。余剰分は売却OK。</div></div>
+        <div class="item-card" data-cat="keep"><div class="item-head"><span class="item-name">星のかけら</span><span class="badge badge-keep">売却NG｜300R</span></div><div class="item-detail">入手機会が極めて少ない。装飾品強化に必須。</div></div>
+        <div class="item-card" data-cat="keep"><div class="item-head"><span class="item-name">大妖精の涙</span><span class="badge badge-keep">売却NG｜50R</span></div><div class="item-detail">蛮族シリーズの最終強化に必要。レア素材。</div></div>
+        <div class="item-card" data-cat="caution"><div class="item-head"><span class="item-name">ホタル・トカゲ・カエル類</span><span class="badge badge-caution">注意｜2〜10R</span></div><div class="item-detail">薬の素材。スピードアップ料理に重要なので少しは残す。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">魚類（全般）</span><span class="badge badge-sell">売ってOK｜6〜50R</span></div><div class="item-detail">料理化で価値倍増。素材のままなら売ってOK。</div></div>
+        <div class="item-card" data-cat="sell"><div class="item-head"><span class="item-name">キノコ類</span><span class="badge badge-sell">売ってOK｜3〜20R</span></div><div class="item-detail">料理素材として消費 or 売却。種類豊富で困らない。</div></div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">基本ルール</div>
+      <p>鉱床は赤い月（7日に1回）で復活。敵素材は赤い月で再ドロップ。「足りなくなったらまた集める」スタンスでOK。</p>
+      <p>素材を直接売るより、馬宿の鍋で料理にしてから売るほうが効率的（2〜10倍の価値）。フロドラの角のかけら（300R）狩りも有名な高効率金策。</p>
+    </div>
+  </section>
+
+  <div class="divider">◆ ◆ ◆</div>
+
+  <!-- 装備セクション -->
+  <section id="equipment">
+    <span class="section-num">02 / EQUIPMENT</span>
+    <h2>装備：防具・武器・弓・盾のおすすめ</h2>
+    <p class="lead">防具は3部位（頭・体・足）。同シリーズ2段階強化以上で揃えるとセット効果が発動します。武器・弓・盾は耐久値があり壊れます（赤い月で復活）。マスターソードは10分で自動修復。大妖精4箇所すべて解放で★★★★まで強化可能（解放費用は100→500→1000→10000ルピー）。</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-eq-tab="armor">防具</button>
+      <button class="tab-btn" data-eq-tab="weapon">武器</button>
+      <button class="tab-btn" data-eq-tab="bow">弓</button>
+      <button class="tab-btn" data-eq-tab="shield">盾</button>
+      <button class="tab-btn" data-eq-tab="upgrade">防具強化</button>
+    </div>
+
+    <div class="eq-panel" data-eq-panel="armor">
+      <div class="subtabs" id="armor-subtabs">
+        <button class="subtab-btn active" data-armor-filter="all">すべて</button>
+        <button class="subtab-btn" data-armor-filter="base">基本</button>
+        <button class="subtab-btn" data-armor-filter="dlc">DLC</button>
+      </div>
+
+      <div class="item-grid" id="armor-grid">
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">蛮族シリーズ</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">攻撃力UP（一式で1.5倍）+ タメ攻撃がんばり長持ち。火力特化。ライネル・ヒノックス狩りに必須。</div><div class="item-meta item-loc">3つのローメイ迷路（南・北・本島）クリアで入手</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">古代兵装シリーズ</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">古代兵器耐性UP + 古代武器攻撃力1.8倍。ガーディアン特攻装備。終盤の対ガノン戦も最適。</div><div class="item-meta item-loc">アッカレ古代研究所で素材と引き換え</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">クライムシリーズ</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">壁登りスピードUP + 壁登りジャンプがんばり長持ち。探索効率が劇的に上がる。早期入手推奨。</div><div class="item-meta item-loc">頭：始まりの台地の祠／服：水の神殿前／足：ハイラル城下町跡</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">忍びシリーズ</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">静かさUP + 夜間移動スピードUP。素材集め・ハイラル城探索で活躍。</div><div class="item-meta item-loc">カカリコ村の防具屋エンカラで購入（一式で約2000R）</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">リト装備（防寒）</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">寒さガード + 凍結無効（セット）。雪山攻略の定番。広範囲のエリアで使う。</div><div class="item-meta item-loc">リトの村の防具屋</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">ゾーラ装備</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">滝登り + 電気ガード（セット）。滝のショートカット移動に必須。</div><div class="item-meta item-loc">ゾーラの里の防具屋</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">ゲルド装備（耐暑）</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">暑さガード + 雷ガード（セット）。ゲルド砂漠の昼間と雷雨の砂漠で必要。</div><div class="item-meta item-loc">ゲルドの街の防具屋（女装で入店）</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">炎の剣士装備</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">炎ガード（耐火）。デスマウンテン攻略に必須。</div><div class="item-meta item-loc">ゴロンシティの防具屋</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">英傑の服</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">ライフを数値表示 + 古代兵器耐性UP。敵HPが見える。戦闘の判断が圧倒的に楽になる。</div><div class="item-meta item-loc">メインチャレンジ「英傑たちの詩」報酬</div></div>
+        <div class="item-card" data-armor-type="base"><div class="item-head"><span class="item-name">ハイリア兵シリーズ</span><span class="badge badge-B">Bランク</span></div><div class="item-detail">効果なし、防御力高め。序盤のつなぎ装備。素材で買えて強化も簡単。</div><div class="item-meta item-loc">ハテノ村・カカリコ村の防具屋</div></div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">ムジュラの仮面</span><span class="badge badge-S">DLC1・Sランク</span></div>
+          <div class="item-detail">ボコブリン・モリブリン・リザルフォス・ライネル系の魔物に気づかれにくくなる（ライネルは一定時間で効果切れ）。攻撃すると即敵対扱い。強化不可。雑魚をスルーして探索したい時に最強。</div>
+          <div class="item-meta item-loc">DLC1：ハイラル平原・コモロ池の壊れた建物（マグネキャッチで宝箱を取り出す）</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">鬼神シリーズ（帽子・服・ブーツ）</span><span class="badge badge-S">DLC2・Sランク</span></div>
+          <div class="item-detail">セット効果「攻撃力アップ・大」が発動。蛮族シリーズと並ぶ攻撃特化装備で、火力増加倍率は蛮族と同等。防御力も3部位各3で計9と中堅。強化可能。蛮族のライネル素材集めが面倒な人にとっての代替最強装備。</div>
+          <div class="item-meta item-loc">DLC2：ロヒッタ・チグの祠（南タバンタ雪原のEX祠チャレンジクリアで開放）</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">ファントムガノンシリーズ（兜・鎧・具足）</span><span class="badge badge-S">DLC2・Sランク</span></div>
+          <div class="item-detail">セット効果「スタル系の敵が襲ってこない＋骨武器ボーナス」。静かさアップ効果も持つ。装備すると村人や馬がリンクを怖がる演出も。骨武器（スタル系ドロップ）の攻撃力が大幅アップ。</div>
+          <div class="item-meta item-loc">DLC2：フィローネ地方フロリア湖周辺の3つの滝壺の宝箱</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">チンクルシリーズ（頭巾・服・ズボン）</span><span class="badge badge-A">DLC1・Aランク</span></div>
+          <div class="item-detail">セット効果「夜間移動速度アップ」が発動。忍びシリーズと同じ夜間特化効果。デザインがチンクル一色になるので、雰囲気重視で楽しめる装備。</div>
+          <div class="item-meta item-loc">DLC1：各地のラムダの秘宝として隠された宝箱から入手</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">ファントムシリーズ（兜・鎧・すねあて）</span><span class="badge badge-A">DLC1・Aランク</span></div>
+          <div class="item-detail">セット効果「攻撃力アップ・小」が発動。蛮族や鬼神より効果は劣るが、入手しやすく序盤〜中盤の攻撃強化として優秀。各部位の防御力も4でハイリア兵より高い。</div>
+          <div class="item-meta item-loc">DLC1：ラムダの秘宝のヒントを元に各地の遺跡で発見</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">サルベージャーシリーズ（メット・ボディ・レッグ）</span><span class="badge badge-A">DLC1・Aランク</span></div>
+          <div class="item-detail">セット効果「滑り止め」が発動。雨の日でも壁登り中に滑り落ちなくなる。雨対策最強装備。ゾーラのヘルムを所持済みなら頭部以外をこちらにすれば滑り止めを両立可能。</div>
+          <div class="item-meta item-loc">DLC1：ラムダの秘宝のヒントを元に海岸や川底から発掘</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">近衛兵シリーズ（帽子・服・ブーツ）</span><span class="badge badge-A">DLC1・Aランク</span></div>
+          <div class="item-detail">セット効果なし、純粋に防御力が高い。各部位5の防御力で、強化すれば最終的にハイリア兵と同等まで上がる。コスチュームとして人気。</div>
+          <div class="item-meta item-loc">DLC1：ラムダの秘宝</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">息吹の勇者シリーズ</span><span class="badge badge-S">本編Sランク</span></div>
+          <div class="item-detail">本編の祠120個（DLC除く）を全クリアすると入手。ハイラル平原のロナ・カータの祠裏手の女神像前の宝箱で入手。セット効果「マスターソード攻撃力アップ」が発動。マスターソードの攻撃力が大幅にアップする。</div>
+          <div class="item-meta item-loc">120個全祠クリア後「導師からの褒美」報酬</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">黄昏の勇者シリーズ（amiibo）</span><span class="badge badge-A">amiibo・Aランク</span></div>
+          <div class="item-detail">『トワイライトプリンセス』の勇者装備の再現。セット効果なし。各部位3で、強化すると★4で防御力20まで上がる。amiibo「リンク（トワイライトプリンセス）」専用報酬。</div>
+          <div class="item-meta item-loc">amiibo「リンク（トワイライトプリンセス）」</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">大空の勇者シリーズ（amiibo）</span><span class="badge badge-A">amiibo・Aランク</span></div>
+          <div class="item-detail">『スカイウォードソード』の勇者装備の再現。セット効果なし。amiibo「リンク（スカイウォードソード）」と『大乱闘スマッシュブラザーズシリーズ』のリンクamiiboから入手可能。</div>
+          <div class="item-meta item-loc">amiibo「リンク（スカイウォードソード／スマブラ）」</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">時のオカリナ勇者シリーズ（amiibo）</span><span class="badge badge-A">amiibo・Aランク</span></div>
+          <div class="item-detail">『時のオカリナ』の勇者装備の再現。緑のチュニックがアイコニック。セット効果なし。amiibo「リンク（時のオカリナ）」専用報酬。</div>
+          <div class="item-meta item-loc">amiibo「リンク（時のオカリナ）」</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">風のタクト勇者シリーズ（amiibo）</span><span class="badge badge-A">amiibo・Aランク</span></div>
+          <div class="item-detail">『風のタクト』のトゥーンリンク装備の再現。デフォルメ風のデザインがかわいい。amiibo「トゥーンリンク」専用報酬。</div>
+          <div class="item-meta item-loc">amiibo「トゥーンリンク（風のタクト／スマブラ）」</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">始まりの勇者シリーズ（amiibo）</span><span class="badge badge-A">amiibo・Aランク</span></div>
+          <div class="item-detail">初代『ゼルダの伝説』のドット絵風リンクをモデルにした装備。amiibo「8bitリンク」専用報酬。</div>
+          <div class="item-meta item-loc">amiibo「8bitリンク」</div>
+        </div>
+
+        <div class="item-card" data-armor-type="dlc">
+          <div class="item-head"><span class="item-name">単品お面・装飾装備</span><span class="badge badge-B">DLC・装飾</span></div>
+          <div class="item-detail">ミドナの冠・ラヴィオの頭巾・ザントの兜・アレのシャツ・青いエビシャツなど。セット効果なし、防御力も低めの装飾枠。コログのお面（コログのミの発見方向を視覚化）だけは実用性が高く、コログ集めの効率が劇的にアップする。</div>
+          <div class="item-meta item-loc">DLC1・2：各地のラムダの秘宝</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eq-panel" data-eq-panel="weapon" style="display:none;">
+      <div class="subtabs" id="weapon-subtabs">
+        <button class="subtab-btn active" data-weapon-filter="all">すべて</button>
+        <button class="subtab-btn" data-weapon-filter="onehand">片手剣</button>
+        <button class="subtab-btn" data-weapon-filter="twohand">両手剣</button>
+        <button class="subtab-btn" data-weapon-filter="spear">槍</button>
+        <button class="subtab-btn" data-weapon-filter="special">特殊</button>
+      </div>
+
+      <div class="item-grid" id="weapon-grid">
+
+        <div class="item-card" data-weapon-type="special">
+          <div class="item-head"><span class="item-name">マスターソード</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">30（対ガノン系60）</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">40（10分で復活）</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（特殊）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">剣ビーム可</span></div>
+          </div>
+          <div class="item-detail">壊れない武器。剣の試練クリアで攻撃力60固定化＋耐久消費なし。ハート最大時にRボタンでビーム発射。雑魚相手にも遠慮なく使える唯一の武器。</div>
+          <div class="item-meta item-loc">コログの森の台座（ハート13個必要）</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="twohand">
+          <div class="item-head"><span class="item-name">ライネルの剛剣</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">58〜78</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">35</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">両手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">タメ攻撃強力</span></div>
+          </div>
+          <div class="item-detail">全武器中トップクラスの攻撃力。タメ攻撃で広範囲を一掃できる。白銀ライネル産は攻撃力78の最強格。蛮族装備＋攻撃Lv3料理で1000ダメージ超え。</div>
+          <div class="item-meta item-loc">青・白・銀・白銀ライネルがドロップ</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">ライネルの剣</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">38〜58</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">37</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">攻撃速度速い</span></div>
+          </div>
+          <div class="item-detail">片手剣最強格。盾と併用できるのでライネル戦にも最適。色によって攻撃力が変動（青→白→銀→白銀の順で強化）。</div>
+          <div class="item-meta item-loc">ライネル全般</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="spear">
+          <div class="item-head"><span class="item-name">獣神の槍／ライネルの槍</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">28〜32</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">35</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">槍</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">リーチ最長</span></div>
+          </div>
+          <div class="item-detail">全槍中最高の攻撃力。リーチが長く、騎乗攻撃と相性◎。タメ攻撃で連続突きが可能。</div>
+          <div class="item-meta item-loc">白銀ライネル等</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="twohand">
+          <div class="item-head"><span class="item-name">王家の両手剣</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">36</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">40</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">両手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">バランス型</span></div>
+          </div>
+          <div class="item-detail">入手しやすさと攻撃力のバランスが最高。ハイラル城で複数本入手可能。中盤〜終盤の主力両手剣。</div>
+          <div class="item-meta item-loc">ハイラル城内、各地の宝箱、ライネル</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">王家の剣</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">36</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">40</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">バランス型</span></div>
+          </div>
+          <div class="item-detail">ハイラル王家の片手剣。盾併用が可能で耐久値も高い。中盤の主力候補。</div>
+          <div class="item-meta item-loc">ハイラル城、宝箱、ライネル</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="spear">
+          <div class="item-head"><span class="item-name">王家の槍</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">28</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">50</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">槍</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">耐久値最高</span></div>
+          </div>
+          <div class="item-detail">通常槍で最高の耐久値。攻撃力UP大の修正値が付けば46になる。長期戦向け。</div>
+          <div class="item-meta item-loc">ハイラル城、各地の宝箱</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="special">
+          <div class="item-head"><span class="item-name">古代兵装・武刀</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">40〜50</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">60〜70</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（特殊）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">対ガーディアン1.3倍</span></div>
+          </div>
+          <div class="item-detail">ガーディアン特効。古代兵装防具と組み合わせると攻撃力1.8倍。終盤のライネル狩り＆対ガノン戦で最適。素材で何度でも作れる。</div>
+          <div class="item-meta item-loc">アッカレ古代研究所で素材と引き換え</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">英傑の剛刀（ダイケン）</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">32</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">60</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（英傑武器）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">壊れても再入手可</span></div>
+          </div>
+          <div class="item-detail">英傑ダルケルの剣。壊れてもゴロンシティの鍛冶屋で再入手可能（ダイヤモンド＋火打ち石＋ゴロン剛剣）。耐久値が高く長く使える。</div>
+          <div class="item-meta item-loc">神獣ヴァ・ルーダニア攻略後、ゴロンの長老から</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">スカイウォードソード（amiibo）</span><span class="badge badge-S">Sランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">32</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">60</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">高耐久＋高火力</span></div>
+          </div>
+          <div class="item-detail">amiibo「リンク（スカイウォードソード）」専用報酬。耐久値60と片手剣の中ではトップクラス。マスターソード代替として最有力。</div>
+          <div class="item-meta item-loc">amiibo（リンク／スカイウォードソード版）</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="twohand">
+          <div class="item-head"><span class="item-name">近衛の両手剣</span><span class="badge badge-A">Aランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">40</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">15</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">両手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">高火力・低耐久</span></div>
+          </div>
+          <div class="item-detail">攻撃力40だが耐久値15と非常に脆い。ハイラル城で大量入手可能なので使い切り前提。短期決戦向け。</div>
+          <div class="item-meta item-loc">ハイラル城内（赤い月で復活）</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">近衛の剣</span><span class="badge badge-A">Aランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">32</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">15</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">攻撃速度速い</span></div>
+          </div>
+          <div class="item-detail">攻撃モーションが速く手数で押せる。盾併用可。耐久が低いので強敵戦の使い切り武器として。</div>
+          <div class="item-meta item-loc">ハイラル城内</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">雷電の剣</span><span class="badge badge-A">Aランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">20 + 雷10</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">30</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（雷属性）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">雷ダメージ追加</span></div>
+          </div>
+          <div class="item-detail">攻撃に雷ダメージが乗る。敵を麻痺させて武器ドロップさせるのに使える。雨でも錆びない。金属敵への特効。</div>
+          <div class="item-meta item-loc">ゾーラの里、各地の電気リザルフォス</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">炎の剣</span><span class="badge badge-A">Aランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">24 + 炎</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">25</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（炎属性）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">敵を着火・草を燃やす</span></div>
+          </div>
+          <div class="item-detail">雪山で体力減少を防止（持ってるだけで暖かい）。敵を着火して継続ダメージ。ボコブリン陣地の草を一気に燃やせる。</div>
+          <div class="item-meta item-loc">デスマウンテン宝箱、炎リザルフォス</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="spear">
+          <div class="item-head"><span class="item-name">氷雪の槍（フローズンスピア）</span><span class="badge badge-A">Aランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">14 + 氷10</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">20</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">槍（氷属性）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">タメ攻撃で凍結→3倍</span></div>
+          </div>
+          <div class="item-detail">タメ攻撃で敵を凍らせ、解凍時に3倍ダメージ。フルチャージで威力1500超えも可。隠れた強武器。</div>
+          <div class="item-meta item-loc">氷リザルフォス、ヘブラ地方の宝箱</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="special">
+          <div class="item-head"><span class="item-name">削岩棒・砕岩棒</span><span class="badge badge-A">Aランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">14（鉱石300%）</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">40</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">両手剣／槍（特殊）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">鉱床を一撃で破壊</span></div>
+          </div>
+          <div class="item-detail">鉱床採掘専用。1スイングで鉱床を破壊し、確実にドロップ。戦闘には使わず採掘専用に温存推奨。砕岩棒のほうが上位。</div>
+          <div class="item-meta item-loc">デスマウンテンの隠し岩（赤い月で復活）</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">英傑の刀ココ</span><span class="badge badge-A">Aランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">24</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">27</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（英傑武器）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">壊れても再入手可</span></div>
+          </div>
+          <div class="item-detail">英傑ウルボザの剣。ゲルドの街でビューラに依頼すれば再入手可能（ゲルドのナイフ＋火打ち石×5＋ダイヤモンド）。</div>
+          <div class="item-meta item-loc">神獣ヴァ・ナボリス攻略後、ビューラから</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="twohand">
+          <div class="item-head"><span class="item-name">森人の両手剣</span><span class="badge badge-B">Bランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">22</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">40</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">両手剣</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">高耐久・量産可</span></div>
+          </div>
+          <div class="item-detail">コログの森で量産可能、耐久値40の優秀な使い捨て武器。中盤の雑魚処理に最適。</div>
+          <div class="item-meta item-loc">コログの森の宝箱（赤い月で復活）</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">三又リザルブーメラン</span><span class="badge badge-B">Bランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">36</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">14</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（投擲）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">投げて戻ってくる</span></div>
+          </div>
+          <div class="item-detail">投げると敵に当たって戻ってくる。タメ攻撃で投擲すれば壊れずに往復。手数を稼げる珍しい武器。</div>
+          <div class="item-meta item-loc">リザルフォス（ラネール地方）</div>
+        </div>
+
+        <div class="item-card" data-weapon-type="onehand">
+          <div class="item-head"><span class="item-name">ボコ棍棒・スパイクボコ棍棒</span><span class="badge badge-B">Bランク</span></div>
+          <div class="weapon-spec">
+            <div class="spec-item"><span class="spec-label">攻撃力</span><span class="spec-value spec-attack">2〜18</span></div>
+            <div class="spec-item"><span class="spec-label">耐久値</span><span class="spec-value">12〜30</span></div>
+            <div class="spec-item"><span class="spec-label">武器種</span><span class="spec-value">片手剣（敵武器）</span></div>
+            <div class="spec-item"><span class="spec-label">特性</span><span class="spec-value">無限供給</span></div>
+          </div>
+          <div class="item-detail">序盤の主力。ボコブリンから無限に取れるので消耗を気にせずガンガン使える。色違いで攻撃力アップ（赤→青→黒→銀の順）。</div>
+          <div class="item-meta item-loc">ボコブリン全般</div>
+        </div>
+
+      </div>
+
+      <div class="info-box" style="margin-top:24px;">
+        <div class="info-box-title">武器の使い分けセオリー</div>
+        <p><strong>4スロット運用</strong>：①強敵専用の高火力武器（ライネル産・古代兵装）／②中堅の主力（王家系・近衛系）／③雑魚処理用（ボコ棍棒・森人）／④属性武器（雷電・炎・氷雪）の4種を持つと状況に応じて切り替えできる。</p>
+        <p><strong>武器ボーナスを引く</strong>：拾った武器に「攻撃力UP大」「耐久値UP」「タメ攻撃がんばり消費DOWN」などの修正値が付くことがある。同じ武器でも数値が違うので、強敵戦前は良い修正値の武器を確保。</p>
+        <p><strong>盾と組み合わせる前提</strong>：両手剣は強力だが盾を構えられないため、ライネル戦では片手剣＋盾のほうが安全。両手剣は雑魚一掃や安全圏でのタメ攻撃用に。</p>
+        <p><strong>マスターソードは常時携帯</strong>：壊れても10分で復活するので、サブ武器として持っておくと武器切れの保険になる。剣の試練クリア後は最強武器の一角に。</p>
+      </div>
+
+      <div class="info-box" style="margin-top:16px;">
+        <div class="info-box-title">武器ポーチ拡張</div>
+        <p>初期は8枠。コログのミ×コログの祠で交換することで最大20枠まで拡張可能。武器ポーチは最優先で拡張すべき項目（盾・弓ポーチより使用頻度が高い）。</p>
+        <p>イチカラ村のハシゴ村長の依頼で1〜2回拡張すると、序盤〜中盤の戦闘がかなり楽になる。</p>
+      </div>
+    </div>
+
+    <div class="eq-panel" data-eq-panel="bow" style="display:none;">
+      <div class="item-grid">
+        <div class="item-card"><div class="item-head"><span class="item-name">獣神の弓</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">攻撃力32、3〜5連射（ランダム）。5連射時の瞬間火力は全弓中最強。</div><div class="item-meta item-loc">白銀ライネル等を倒す</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">オオワシの弓（英傑武器）</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">攻撃力28、3連射、長射程、速射性能◎。バランス最強。常用するならこれ一本でOK。</div><div class="item-meta item-loc">神獣ヴァ・メドー攻略後にカーン村長から</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">近衛の弓</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">攻撃力36、矢初速最速。単発火力と命中力が最高クラス。</div><div class="item-meta item-loc">ハイラル城内</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">古代兵装の弓</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">攻撃力44、ガーディアン1.5倍特効。ガーディアンの目に当てれば一撃。終盤の保険。</div><div class="item-meta item-loc">アッカレ古代研究所で素材と引き換え</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">森人の弓</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">攻撃力16、5連射。入手しやすい連射弓。中盤の主力。</div><div class="item-meta item-loc">コログの森の宝箱</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">王家の弓</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">攻撃力38、耐久36。単発火力が高い、バランス型。</div><div class="item-meta item-loc">ハイラル城、ライネル等</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">ハヤブサの弓</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">攻撃力16、速射特化。飛行型ガーディアンや空中の敵に最適。</div><div class="item-meta item-loc">リトの村周辺の宝箱</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">ゾーラの弓</span><span class="badge badge-B">Bランク</span></div><div class="item-detail">攻撃力20、軌道が落ちにくい。長距離狙撃に向く。</div><div class="item-meta item-loc">ゾーラの里、リザルフォス</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">ゲルドの弓</span><span class="badge badge-B">Bランク</span></div><div class="item-detail">攻撃力24、ズーム機能。スコープのように使える狙撃弓。</div><div class="item-meta item-loc">ゲルドの街、ボコブリン弓兵</div></div>
+      </div>
+    </div>
+
+    <div class="eq-panel" data-eq-panel="shield" style="display:none;">
+      <div class="item-grid">
+        <div class="item-card"><div class="item-head"><span class="item-name">ハイリアの盾</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">盾ガード値90、耐久値が桁違いに高い。実質1個限り。失っても再入手可能。</div><div class="item-meta item-loc">ハイラル城の地下、スタルヒノックス撃破</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">近衛の盾</span><span class="badge badge-S">Sランク</span></div><div class="item-detail">盾ガード値70、耐久良好。ハイリアの盾の代用として優秀。</div><div class="item-meta item-loc">ハイラル城内</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">獣神の盾</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">盾ガード値60、ライネル産。魔物産盾の最高峰。盾弾きで攻撃も可。</div><div class="item-meta item-loc">白銀ライネル等</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">王家の盾</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">盾ガード値55、耐久40。ハイラル城でよく見つかる中盤の主力。</div><div class="item-meta item-loc">ハイラル城、各地の宝箱</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">古代兵装の盾</span><span class="badge badge-A">Aランク</span></div><div class="item-detail">対ガーディアンビーム反射が容易。ガーディアン戦の保険として。</div><div class="item-meta item-loc">アッカレ古代研究所</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">ゲルドの盾</span><span class="badge badge-B">Bランク</span></div><div class="item-detail">盾ガード値32、軽量。ゲルド地方の宝箱で入手しやすい。</div><div class="item-meta item-loc">ゲルドの街、ゲルドの塔周辺</div></div>
+        <div class="item-card"><div class="item-head"><span class="item-name">木の盾各種</span><span class="badge badge-B">Bランク</span></div><div class="item-detail">盾ガード値低、耐久も低い。炎・電気攻撃で燃えるので注意。</div><div class="item-meta item-loc">フィールド全般</div></div>
+      </div>
+    </div>
+
+    <div class="eq-panel" data-eq-panel="upgrade" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">強化の仕組み</span><span class="badge badge-S">基礎知識</span></div>
+          <div class="item-detail">防具は大妖精の泉で★1〜★4の4段階まで強化できる。解放した大妖精の「人数」で強化上限が決まる（1人目＝★1まで、2人目＝★2まで、3人目＝★3まで、4人目＝★4まで）。順番は関係なく、どの泉を先に開けても同じ。</div>
+          <div class="item-meta">💡 セットボーナスは★2以上の強化＋同シリーズ3部位装備で発動</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">大妖精の泉（全4箇所）</span><span class="badge badge-S">場所・費用</span></div>
+          <div class="item-detail">①カカリコ村裏手の丘（100R）→ ②タバンタ辺境・リトの馬宿近く（500R）→ ③アッカレ地方・ヒガッカレ馬宿近く（1,000R）→ ④ゲルド砂漠・砂漠南の馬宿近く（10,000R）。合計11,600Rが必要。4人目の10,000Rは金策してから訪問するのが吉。</div>
+          <div class="item-meta">💡 馬神マーロンの泉（西フィローネ・高原の馬宿南東・1,000R）は別物。馬の復活用</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">防御力の上昇値</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">初期値3の防具の場合：★1→5 / ★2→8 / ★3→12 / ★4→20。初期値2の防具の場合：★1→3 / ★2→5 / ★3→8 / ★4→12。★4まで強化すると初期値の約6倍になる。3部位合計で防御力60（初期値3系列）に達し、ガノン戦でも余裕の耐久力になる。</div>
+        </div>
+
+      </div>
+
+      <h3 style="margin:36px 0 16px; font-size:18px; font-weight:700; display:flex; align-items:center; gap:10px;"><span style="color:#D97757; font-size:11px;">◆</span>主要防具の強化素材一覧</h3>
+
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">蛮族シリーズ（1部位あたり）</span><span class="badge badge-S">攻撃特化</span></div>
+          <div class="item-detail">★1：ライネルの角×1 / ★2：ライネルのひづめ×2 / ★3：ライネルの肝×3 / ★4：ドラゴンの角のかけら×2＋大妖精の涙×1（部位ごとにドラゴンの種類が異なる：兜=オルドラ、服=ネルドラ、腰巻き=フロドラ）。ライネル狩りが前提の高コスト強化。</div>
+          <div class="item-meta">💡 ★4にはライネル素材＋ドラゴン素材＋大妖精の涙が全部必要。全部位★4は上級者向け</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">古代兵装シリーズ（1部位あたり）</span><span class="badge badge-S">対ガーディアン</span></div>
+          <div class="item-detail">★1：古代のネジ×5 / ★2：古代のバネ×5＋古代のシャフト×5 / ★3：古代のコア×1＋古代の歯車×15 / ★4：古代の巨大なコア×1＋星のかけら×1。最終段階で星のかけらが必要になるのが最大のボトルネック。古代のコア系素材は絶対売るな。</div>
+          <div class="item-meta">💡 古代の巨大なコアはデクの木のガーディアン撃破やハイラル城内のガーディアンから入手</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">クライムシリーズ（1部位あたり）</span><span class="badge badge-S">探索特化</span></div>
+          <div class="item-detail">★1：キースの羽×3 / ★2：ゴーゴーハスの実×3＋電気キースの羽×5 / ★3：氷キースの羽×5＋ゴーゴーガエル×10 / ★4：ゴーゴースミレ×10＋ゴーゴートカゲ×15。入手しやすい素材が中心なのでライネル不要。序盤から計画的に強化できる。</div>
+          <div class="item-meta">💡 ゴーゴー系素材はフィローネ地方〜ハテノ村周辺に多い。早めにストック推奨</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">忍びシリーズ（1部位あたり）</span><span class="badge badge-A">隠密特化</span></div>
+          <div class="item-detail">★1：姫しずか×3 / ★2：シズカホタル×5＋ゲルド高地産の素材 / ★3：シノビマス×5＋ゲルドキンギョ×5 / ★4：星のかけら×1＋シズカホタル×10。★4で星のかけらが必要。序盤〜中盤は★2止めでセットボーナスだけ発動させるのがコスパ良い。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">リト装備（雪よけ）（1部位あたり）</span><span class="badge badge-A">防寒</span></div>
+          <div class="item-detail">★1：ルビー×1 / ★2：ルビー×3＋ポカポカ草の実×3 / ★3：ポカポカヤンマ×3＋炎キースの羽×5 / ★4：ルビー×1＋サファイア×1。宝石素材が中心で入手しやすい。★2で凍結無効のセットボーナスが発動するので★2止めでも十分実用的。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ゾーラ装備（1部位あたり）</span><span class="badge badge-A">水中行動</span></div>
+          <div class="item-detail">★1：リザルフォスの爪×3 / ★2：リザルフォスのしっぽ×5 / ★3：オパール×5＋リザルフォスの肝×5 / ★4：ドラゴンのウロコ×1＋オパール×10。リザルフォス素材中心で比較的集めやすい。★2で電気ガードのセットボーナスが発動。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ハイリア兵シリーズ（1部位あたり）</span><span class="badge badge-B">序盤つなぎ</span></div>
+          <div class="item-detail">★1：ボコブリンの牙×5 / ★2：ボコブリンの角×3 / ★3：モリブリンの角×3 / ★4：ヒノックスの爪×2＋ヒノックスの肝×2。雑魚素材で★3まで上げられるのでコスパ最高。★4はヒノックス狩りが必要だが、防御力は古代兵装と同値の最強クラス。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">耐火装備（1部位あたり）</span><span class="badge badge-A">デスマウンテン</span></div>
+          <div class="item-detail">★1：ファイアチュチュゼリー×3 / ★2：炎リザルフォスの角×3 / ★3：炎リザルフォスのしっぽ×3＋ルビー×1 / ★4：ルビー×3＋炎リザルフォスの肝×5。炎リザルフォスはデスマウンテンに大量に出現するので素材に困らない。</div>
+        </div>
+
+      </div>
+
+      <h3 style="margin:36px 0 16px; font-size:18px; font-weight:700; display:flex; align-items:center; gap:10px;"><span style="color:#D97757; font-size:11px;">◆</span>強化の優先順位</h3>
+
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">効率的な強化順序</span><span class="badge badge-S">最重要</span></div>
+          <div class="item-detail">①クライムシリーズを★2（セット効果発動）→ ②忍びシリーズを★2（セット効果発動）→ ③蛮族シリーズを★2（セット効果発動）→ ④古代兵装を★3〜4（終盤の防御力確保）→ ⑤蛮族を★4（最終火力）。まず「セット効果を全部発動させる」ことを優先し、そのあと★3→★4と深掘りしていくのが最効率。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">★4のボトルネック素材</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">多くの防具の★4強化で要求される希少素材：星のかけら（夜間に空から落ちてくる流れ星を追いかけて回収）、大妖精の涙（ヒノックス撃破でごく稀にドロップ）、ドラゴンの角のかけら（ドラゴン周回で定期入手）、ライネル素材（ライネル狩りで入手）。これらは日頃からコツコツ集めておく。</div>
+          <div class="item-meta">💡 星のかけらは夜中にデュエルピークス周辺の高台で待機すると見つけやすい</div>
+        </div>
+
+      </div>
+
+      <h3 style="margin:36px 0 16px; font-size:18px; font-weight:700; display:flex; align-items:center; gap:10px;"><span style="color:#D97757; font-size:11px;">◆</span>強化素材の効率入手ガイド</h3>
+
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">星のかけら</span><span class="badge badge-S">最レア</span></div>
+          <div class="item-detail">双子山（南側）の山頂にあるジベニーロの祠にワープし、頂上で焚き火をして夜PM9:00にする。ハイラル平原方向を見て待機すると、PM9:00〜AM2:00の間に流れ星が落ちてくる。落下地点を望遠鏡でピン打ちし、近くの祠にワープして回収。AM5:00で消えるので急いで取りに行く。</div>
+          <div class="item-meta">💡 落ちてこない場合は一度朝にしてから夜に再セット。連続で集めると出にくくなる</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ライネル素材（角・ひづめ・肝）</span><span class="badge badge-S">戦闘必須</span></div>
+          <div class="item-detail">雷獣山のライネルが色違いに関係なく固定出現するので、蛮族強化用の素材集めに最適。ライネルは赤い月で復活する。白銀ライネル以上を倒すと角・ひづめ・肝が確定ドロップ。ジャスト回避ラッシュ＋ヘッドショットで安定撃破できる。</div>
+          <div class="item-meta">💡 ゲーム進行でライネルの色が変化（赤→青→白→白銀）。白銀以上はレアドロップ増加</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">古代素材（ネジ・バネ・歯車・シャフト・コア）</span><span class="badge badge-S">古代兵装用</span></div>
+          <div class="item-detail">ハイラル城周辺のガーディアン（歩行型・飛行型）を狩るのが最効率。盾パリィでビーム反射すれば一撃。アッカレ地方のガーディアン墓場も密集地帯。「古代のコア」は歩行型ガーディアンから確率ドロップ、「古代の巨大なコア」は飛行型＋デクの木周辺から。力の試練（極位）の祠のガーディアンも毎回ドロップ。</div>
+          <div class="item-meta">💡 古代の巨大なコアはハイラル城内の朽ちたガーディアンからも稀にドロップ</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">大妖精の涙</span><span class="badge badge-A">蛮族★4用</span></div>
+          <div class="item-detail">ヒノックスを撃破するとごく稀にドロップする。ヒノックスはハイラル各地に約40体おり、赤い月で復活する。確率が低いので日常的にヒノックスを見かけたら倒しておく。力の試練の祠のガーディアンや白銀ライネルからも極低確率で出ることがある。</div>
+          <div class="item-meta">💡 ヒノックスは目に矢を撃つと怯むので、怯ませてから腹の上に乗ってネックレスの武器を奪いつつ攻撃</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ドラゴン素材（角・爪・牙・ウロコ）</span><span class="badge badge-A">料理＋強化用</span></div>
+          <div class="item-detail">オルドラ→タバンタ大橋（朝5:00）、フロドラ→ウライト湖（朝5:00）、ネルドラ→ジター・サミの祠（朝5:00〜6:00）で周回。1日1回、部位ごとに1個ずつ取れる。本ガイドの「ドラゴン素材周回」セクションに詳細ルートあり。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ゴーゴー系素材（ハスの実・ガエル・スミレ・トカゲ）</span><span class="badge badge-A">クライム用</span></div>
+          <div class="item-detail">ゴーゴーハスの実：フィローネ地方のウライト湖周辺に大量に生育。ゴーゴーガエル：ラネール湿地・ハイラル平原の湿地帯で夜間に出現。ゴーゴースミレ：ゲルド高地・ヘブラ山脈の岩場。ゴーゴートカゲ：ゲルド砂漠の岩場・ハテノ村周辺の草むら。全般にフィローネ〜ハテノ方面が採取しやすい。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">シズカホタル・姫しずか</span><span class="badge badge-A">忍び用</span></div>
+          <div class="item-detail">シズカホタル：夜間（PM9:00以降）にカカリコ村周辺・大妖精の泉周辺の草むらに大量出現。しのび装備を着てしゃがみ歩きで近づいて採取。姫しずか：大妖精の泉4箇所すべての周囲に生育。サトリ山の山頂付近にも群生。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">キース系素材（通常・炎・氷・電気の羽）</span><span class="badge badge-B">クライム用</span></div>
+          <div class="item-detail">通常キース：夜間にフィールドのどこでも出現。弓で倒すと確実。炎キース：デスマウンテン周辺の夜間。氷キース：ヘブラ山脈・タバンタ雪原の夜間。電気キース：ゲルド砂漠・ラネール地方の夜間。各属性キースは対応地域に行けば夜間に無限に出現する。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">リザルフォス系素材（爪・しっぽ・肝）</span><span class="badge badge-B">ゾーラ用</span></div>
+          <div class="item-detail">ゾーラの里周辺の川沿いに大量に出現。リザルフォスの爪は通常種から確定、しっぽは青以上から、肝は黒以上からドロップ。ラネール地方の川沿いを走り回れば短時間で大量に入手可能。赤い月で復活。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ボコブリン・モリブリン素材</span><span class="badge badge-B">ハイリア兵用</span></div>
+          <div class="item-detail">ボコブリンの牙・角：フィールドのどこにでもいる。弓兵を倒すと効率的。モリブリンの角：ハイラル平原のモリブリン拠点、ハイラル城周辺に多い。ヒノックスの爪・肝：ヒノックス約40体がハイラル各地に固定出現（赤い月で復活）。フィローネ地方とアッカレ地方に密集。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">宝石素材（ルビー・サファイア・オパール）</span><span class="badge badge-B">リト・ゾーラ用</span></div>
+          <div class="item-detail">イワロック（各地に約40体固定出現）を倒すと鉱石を大量にドロップ。デスマウンテン周辺のイワロックはルビーを多くドロップ。ヘブラ地方のイワロックはサファイアが多い。一般の鉱床も削岩棒で叩けば宝石が出る。赤い月で復活。</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">優先度の3本柱</div>
+      <p><strong>クライムシリーズ（探索）／蛮族シリーズ（戦闘）／古代兵装シリーズ（対ガーディアン）</strong>。この3セットで攻略の95%はカバーできます。</p>
+      <p>英傑の服は早めに取る価値あり。敵HPが数値で表示されるのでライネル戦・ヒノックス戦の判断が劇的に楽になります。</p>
+      <p>蛮族（攻撃UP）と料理の攻撃UPは重複しないので、蛮族装備を着るなら料理は防御UPか体力回復で組むのがセオリーです。</p>
+    </div>
+  </section>
+
+  <div class="divider">◆ ◆ ◆</div>
+
+  <!-- 料理セクション -->
+  <section id="cooking">
+    <span class="section-num">03 / COOKING</span>
+    <h2>料理：序盤・中盤・終盤の最適解</h2>
+    <p class="lead">料理は同系統の素材だけを混ぜるのが鉄則。「ツルギ系（攻撃）」「ヨロイ系（防御）」「ゴーゴー系（移動）」「ポカポカ系（寒さ）」など、接頭語で揃えます。違う系統を混ぜると効果が消えてただの回復料理になります。</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-stage-tab="early">序盤</button>
+      <button class="tab-btn" data-stage-tab="mid">中盤</button>
+      <button class="tab-btn" data-stage-tab="late">終盤</button>
+    </div>
+
+    <div class="subtabs">
+      <button class="subtab-btn active" data-cat-filter="all">すべて</button>
+      <button class="subtab-btn" data-cat-filter="attack">攻撃</button>
+      <button class="subtab-btn" data-cat-filter="defense">防御</button>
+      <button class="subtab-btn" data-cat-filter="heal">回復</button>
+      <button class="subtab-btn" data-cat-filter="utility">探索/移動</button>
+      <button class="subtab-btn" data-cat-filter="resist">耐性</button>
+      <button class="subtab-btn" data-cat-filter="stealth">潜入</button>
+      <button class="subtab-btn" data-cat-filter="must">保険</button>
+    </div>
+
+    <div class="cook-panel" data-stage-panel="early">
+      <div class="stage-info"><strong>序盤の方針：</strong>ハートが少なくスタミナも短い時期。素材も限られるので「とにかくハート多く回復」と「ピンチ時の保険」を優先。攻撃料理よりまず防御・回復を充実させる。</div>
+      <div class="item-grid cook-grid">
+        <div class="item-card" data-cook-cat="heal"><div class="item-head"><span class="item-name">リンゴ煮込み果実</span><span class="badge badge-heal">回復</span></div><div class="item-mat">リンゴ×5</div><div class="item-detail"><strong>効果：</strong>ハート12.5回復</div><div class="item-meta">始まりの台地〜どこでもリンゴは大量採取可能。最初の1ヶ月はこれで十分</div></div>
+        <div class="item-card" data-cook-cat="must"><div class="item-head"><span class="item-name">マックスドリアン×3</span><span class="badge badge-must">保険</span></div><div class="item-mat">マックスドリアン×3</div><div class="item-detail"><strong>効果：</strong>ハート全回復 + 黄ハート+12個</div><div class="item-meta">フィローネの塔北東で20個以上採取可能。最重要の保険料理</div></div>
+        <div class="item-card" data-cook-cat="utility"><div class="item-head"><span class="item-name">がんばり薬</span><span class="badge badge-utility">探索</span></div><div class="item-mat">ガンバリトンボ×3 + ヒノックスの牙×1（魔物素材）</div><div class="item-detail"><strong>効果：</strong>がんばり全回復</div><div class="item-meta">草むらでガンバリトンボを大量捕獲。崖登りが楽になる</div></div>
+        <div class="item-card" data-cook-cat="resist"><div class="item-head"><span class="item-name">ピリ辛野菜炒め</span><span class="badge badge-resist">寒さ</span></div><div class="item-mat">ポカポカ草の実×4</div><div class="item-detail"><strong>効果：</strong>寒さガードLv1 約10分</div><div class="item-meta">雪山に行く前に必須。装備買えるまでの命綱</div></div>
+        <div class="item-card" data-cook-cat="defense"><div class="item-head"><span class="item-name">カチコチのきのこ焼き</span><span class="badge badge-defense">防御</span></div><div class="item-mat">ヨロイダケ×5</div><div class="item-detail"><strong>効果：</strong>防御力Lv2 約4分</div><div class="item-meta">ヨロイダケは森林地帯で採取可能。ハテノ村周辺で大量に手に入る</div></div>
+        <div class="item-card" data-cook-cat="stealth"><div class="item-head"><span class="item-name">しのび煮込み果実</span><span class="badge badge-stealth">潜入</span></div><div class="item-mat">姫しずか×3 + リンゴ×2</div><div class="item-detail"><strong>効果：</strong>静かさLv2 約3分</div><div class="item-meta">姫しずかは草原・森に咲く花。馬を捕まえる時にも便利</div></div>
+        <div class="item-card" data-cook-cat="heal"><div class="item-head"><span class="item-name">焼きケモノ肉</span><span class="badge badge-heal">回復</span></div><div class="item-mat">生肉を焚き火で焼くだけ</div><div class="item-detail"><strong>効果：</strong>ハート2回復</div><div class="item-meta">鍋がない場所での緊急回復。料理覚える必要なし</div></div>
+      </div>
+    </div>
+
+    <div class="cook-panel" data-stage-panel="mid" style="display:none;">
+      <div class="stage-info"><strong>中盤の方針：</strong>神獣攻略中〜攻略後。ハート・スタミナが増え、各地の村にアクセス可能に。バフ料理を本格運用開始。ライネル狩りや祠攻略のため攻撃UP・防御UPの量産が必要。</div>
+      <div class="item-grid cook-grid">
+        <div class="item-card" data-cook-cat="attack"><div class="item-head"><span class="item-name">チカラ煮込み果実</span><span class="badge badge-attack">攻撃</span></div><div class="item-mat">ツルギバナナ×4 + ヤギ肉×1</div><div class="item-detail"><strong>効果：</strong>攻撃力Lv2 約12分</div><div class="item-meta">バナナはフィローネ〜ラネールで大量採取。中盤の主力攻撃料理</div></div>
+        <div class="item-card" data-cook-cat="defense"><div class="item-head"><span class="item-name">カチコチ煮込み果実</span><span class="badge badge-defense">防御</span></div><div class="item-mat">ヨロイダケ×4 + リンゴ×1</div><div class="item-detail"><strong>効果：</strong>防御力Lv2 約4分</div><div class="item-meta">ライネル戦に向けて大量ストック推奨。事故率が激減する</div></div>
+        <div class="item-card" data-cook-cat="attack"><div class="item-head"><span class="item-name">チカラのきのこホイル焼き</span><span class="badge badge-attack">攻撃</span></div><div class="item-mat">ツルギダケ×5</div><div class="item-detail"><strong>効果：</strong>攻撃力Lv3 約4分</div><div class="item-meta">ドラゴン素材がまだ揃わない時の高火力レシピ</div></div>
+        <div class="item-card" data-cook-cat="utility"><div class="item-head"><span class="item-name">ゴーゴー煮込み果実</span><span class="badge badge-utility">探索</span></div><div class="item-mat">ゴーゴーハスの実×3 + リンゴ×2</div><div class="item-detail"><strong>効果：</strong>移動Lv2 約3〜4分</div><div class="item-meta">コログ集め・祠探しの効率が劇的に上がる</div></div>
+        <div class="item-card" data-cook-cat="stealth"><div class="item-head"><span class="item-name">しのび薬</span><span class="badge badge-stealth">潜入</span></div><div class="item-mat">シズカホタル×4 + 魔物素材×1</div><div class="item-detail"><strong>効果：</strong>静かさLv3 約3分</div><div class="item-meta">ハイラル城武器集めの必需品。シズカホタルは夜の草むらで大量入手</div></div>
+        <div class="item-card" data-cook-cat="heal"><div class="item-head"><span class="item-name">極上肉のシチュー</span><span class="badge badge-heal">回復</span></div><div class="item-mat">極上ケモノ肉×4 + ハイラル米×1</div><div class="item-detail"><strong>効果：</strong>ハート17〜20回復</div><div class="item-meta">ヘブラ雪山で極上肉を狩って馬宿で量産。金策にも使える</div></div>
+        <div class="item-card" data-cook-cat="resist"><div class="item-head"><span class="item-name">ピリ辛果実のキノコあえ</span><span class="badge badge-resist">耐性</span></div><div class="item-mat">ポカポカ草の実×4 + ポカポカダケ×1</div><div class="item-detail"><strong>効果：</strong>寒さガードLv2 約12分30秒</div><div class="item-meta">極寒エリアでもダメージなし。ヘブラ・ゲルド砂漠夜間で活躍</div></div>
+        <div class="item-card" data-cook-cat="resist"><div class="item-head"><span class="item-name">ヒンヤリメロン煮込み</span><span class="badge badge-resist">耐性</span></div><div class="item-mat">ヒンヤリメロン×4 + ヒンヤリ草×1</div><div class="item-detail"><strong>効果：</strong>暑さガードLv2 約12分30秒</div><div class="item-meta">ゲルド砂漠の昼間に必須。装備で代用可能だが料理だと装備を変えなくていい</div></div>
+        <div class="item-card" data-cook-cat="utility"><div class="item-head"><span class="item-name">マックスがんばり料理</span><span class="badge badge-utility">探索</span></div><div class="item-mat">マックスマツタケ×5</div><div class="item-detail"><strong>効果：</strong>がんばり全回復 + 黄ゲージ追加</div><div class="item-meta">ヘブラ地方北部で採取。長距離飛行・崖登りに必須</div></div>
+      </div>
+    </div>
+
+    <div class="cook-panel" data-stage-panel="late" style="display:none;">
+      <div class="stage-info"><strong>終盤の方針：</strong>ハイラル城突入・ガノン戦・剣の試練・ライネル狩り中心。ドラゴン素材を活用した30分バフ料理が標準。ハート上限まで増えているのでマックス系より純粋なバフが優先。</div>
+      <div class="item-grid cook-grid">
+        <div class="item-card" data-cook-cat="attack"><div class="item-head"><span class="item-name">ツルギダイのムニエル</span><span class="badge badge-attack">攻撃</span></div><div class="item-mat">ツルギダイ×4 + ドラゴン角のかけら×1</div><div class="item-detail"><strong>効果：</strong>攻撃力Lv3 30分</div><div class="item-meta">終盤の決定版。ライネル・ガノン・剣の試練で必須。ハイリア湖などで釣れる</div></div>
+        <div class="item-card" data-cook-cat="defense"><div class="item-head"><span class="item-name">ヨロイダイのムニエル</span><span class="badge badge-defense">防御</span></div><div class="item-mat">ヨロイダイ×4 + ドラゴン角のかけら×1</div><div class="item-detail"><strong>効果：</strong>防御力Lv3（+24）30分</div><div class="item-meta">ライネル戦の保険ならこちらが安定。攻撃料理よりミスを許容できる</div></div>
+        <div class="item-card" data-cook-cat="utility"><div class="item-head"><span class="item-name">ゴーゴー料理（30分）</span><span class="badge badge-utility">探索</span></div><div class="item-mat">ゴーゴーハスの実×4 + ドラゴン角×1</div><div class="item-detail"><strong>効果：</strong>移動Lv3（1.4倍速）30分</div><div class="item-meta">コログコンプ・剣の試練・写し絵の場所探しなどやり込みの必需品</div></div>
+        <div class="item-card" data-cook-cat="attack"><div class="item-head"><span class="item-name">チカラのリザル焼き</span><span class="badge badge-attack">攻撃</span></div><div class="item-mat">ツルギゴイ×4 + ヨロイカブト×1</div><div class="item-detail"><strong>効果：</strong>攻撃力Lv3 約7分</div><div class="item-meta">ドラゴン素材温存ならこちら。Lv2以上の魔物素材で延長</div></div>
+        <div class="item-card" data-cook-cat="must"><div class="item-head"><span class="item-name">マックスドリアン×5</span><span class="badge badge-must">保険</span></div><div class="item-mat">マックスドリアン×5</div><div class="item-detail"><strong>効果：</strong>ハート全回復 + 黄ハート+20</div><div class="item-meta">ガノン戦の最後の砦。ハート上限30個分の余裕が生まれる</div></div>
+        <div class="item-card" data-cook-cat="heal"><div class="item-head"><span class="item-name">ハート煮込み果実</span><span class="badge badge-heal">対ガノン</span></div><div class="item-mat">ハートダイコン×3 + ハートトカゲ×1</div><div class="item-detail"><strong>効果：</strong>ハート全回復 + 黄ハート+5〜10</div><div class="item-meta">ハート系素材は赤い月で大成功すると黄ハートが大量追加される</div></div>
+        <div class="item-card" data-cook-cat="resist"><div class="item-head"><span class="item-name">燃えず薬Lv2</span><span class="badge badge-resist">耐性</span></div><div class="item-mat">ヒケシアゲハ×4 + 魔物素材×1</div><div class="item-detail"><strong>効果：</strong>炎ガードLv2 8〜10分</div><div class="item-meta">デスマウンテン頂上付近・ガノン戦の炎フェーズで使用。装備で代用可</div></div>
+        <div class="item-card" data-cook-cat="resist"><div class="item-head"><span class="item-name">ガッツリ寒さガード</span><span class="badge badge-resist">耐性</span></div><div class="item-mat">ポカポカ草の実×4 + ドラゴン角×1</div><div class="item-detail"><strong>効果：</strong>寒さガードLv2 30分</div><div class="item-meta">剣の試練「中位」で寒冷エリアが連続するため、長時間維持できる料理が便利</div></div>
+        <div class="item-card" data-cook-cat="attack"><div class="item-head"><span class="item-name">マモノ系チカラ料理</span><span class="badge badge-attack">マモノ料理</span></div><div class="item-mat">ツルギダイ×4 + マモノエキス×1</div><div class="item-detail"><strong>効果：</strong>攻撃Lv3 1分・10分・30分のいずれか</div><div class="item-meta">マモノエキスはキルトンから購入。運次第だが30分ヒットすればドラゴン素材温存可能</div></div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">3つの黄金ルール</div>
+      <p><strong>同系統で揃える</strong>：ツルギ系とヨロイ系を混ぜると効果が消える。接頭語が同じ素材だけで料理する。</p>
+      <p><strong>料理ポーチは60枠固定</strong>：拡張不可なので、用途別に何個ストックするか計画的に。</p>
+      <p><strong>ドラゴン素材は神</strong>：1個入れるだけでLv3効果が30分維持できる。100%大成功も発動。「角のかけら」が最強で、3頭のドラゴンから定期的に入手可能。</p>
+    </div>
+
+    <div class="info-box" style="margin-top:16px;">
+      <div class="info-box-title">100%大成功のタイミング</div>
+      <p>①ドラゴン素材入り、②星のかけら入り、③赤い月の前後（深夜23:30〜0:15）。素材を温存したいなら赤い月の時間に料理するのがベスト。</p>
+      <p>大成功するとハート+3、効果時間+5分、Lv+1などのボーナスが付与されます。</p>
+    </div>
+  </section>
+
+  <div class="divider">◆ ◆ ◆</div>
+
+  <!-- テクニックセクション -->
+  <section id="tips">
+    <span class="section-num">04 / TECHNIQUES</span>
+    <h2>テクニック：知って得する小技集</h2>
+    <p class="lead">ブレワイは「正規ルートが正解ではない」ゲームです。物理演算・地形・属性・行動パターンを理解するだけで、戦闘も探索も金策も劇的に効率が上がります。カテゴリ別に整理しました。</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tips-tab="combat">戦闘</button>
+      <button class="tab-btn" data-tips-tab="explore">探索・移動</button>
+      <button class="tab-btn" data-tips-tab="resource">素材・金策</button>
+      <button class="tab-btn" data-tips-tab="cooking">料理・回復</button>
+      <button class="tab-btn" data-tips-tab="env">環境活用</button>
+    </div>
+
+    <div class="tips-panel" data-tips-panel="combat">
+      <div class="item-grid">
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">空中弓矢でスローモーション</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">ジャンプ中に弓を構えると、がんばりゲージが続く限り時間がスローになる。ヘッドショットが格段に狙いやすくなり、ライネルや強敵への必中攻撃が可能。近くに崖がなければリーバルトルネードで上昇して使う。</div>
+          <div class="item-meta">💡 馬から飛び降りる瞬間も同じスロー射撃が発動する</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">ジャスト回避→ラッシュで大ダメージ</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">敵の攻撃が当たる直前にバク宙（後方）または横跳びを決めるとジャスト回避が発動。スローモーション中にYボタン連打でラッシュ攻撃。この間に高火力の両手剣に持ち替えると火力が跳ね上がる。</div>
+          <div class="item-meta">💡 バク宙は縦攻撃に、横跳びは横薙ぎ攻撃に合わせる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">ヘッドショットで2倍ダメージ</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">敵の頭に矢を当てると通常の2倍ダメージ＋よろめき効果。よろめいた隙に矢を連続ヒットさせ、起き上がったら再びヘッドショットを決めるループで、ライネルも一方的に倒せる。</div>
+          <div class="item-meta">💡 ZLでロックオン後にRスティックで頭に微調整するとズレにくい</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">盾パリィでガーディアンを一撃</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">ガーディアンのビームが着弾する直前（目が赤く光る瞬間）にZLで盾を構えるとビームを反射して一撃撃破。タイミングがシビアだが、マスターするとガーディアンが脅威でなくなる。古代兵装の盾なら反射判定が広い。</div>
+          <div class="item-meta">💡 目が赤く光り始めたらZLを押すイメージ。失敗しても木の枝でもOK</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">雷の矢で集団感電・武器落とし</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">雷の矢を金属製の武器や鎧に当てると、周囲の敵まで連鎖感電させられる。拠点での一網打尽に有効。また感電した敵は武器を落とすため、強い武器を奪うのにも使える。</div>
+          <div class="item-meta">💡 金属製の盾を構えている敵に打ち込むと盾ごと感電して武器も落とす</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">属性の相性を使いこなす</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">炎→氷の敵に特効（即溶解）。氷→炎の敵に特効（即消火）。雷→金属敵・雨天時に広範囲効果。イワロック・イシロックはハンマー系の大剣タメ攻撃が弱点（弱点の石に当てると大ダメージ）。</div>
+          <div class="item-meta">💡 ウィズロープは逆属性の武器で一撃。ウィズロープを倒すとロッドが入手できる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">不意打ちで3倍ダメージ</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">しゃがみ歩きで敵の背後に回るか、寝ている敵（夜10時以降）に近づいてYボタンで不意打ち。通常の3倍ダメージが入る。忍び装備かしのび薬で確実性アップ。</div>
+          <div class="item-meta">💡 夜10時以降、ボコブリン・モリブリンは焚き火のそばで寝る。夜襲が有効</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">ビタロックで吹っ飛ばす</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">岩や金属オブジェクトをビタロックで止め、何度も殴るとエネルギーが蓄積。解除すると高速で吹っ飛んで敵に激突し大ダメージ。イワロックの岩腕を吹っ飛ばす定番戦法。</div>
+          <div class="item-meta">💡 蓄積できるエネルギーに上限あり。殴りすぎると効果が弱くなる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">水に落とすだけで即撃破</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">ボコブリン・モリブリンは泳げないため、深い水中に落とすだけで倒せる。武器消費ゼロで強敵を処理できる。スタル系も水が弱点なので蹴り飛ばして水辺へ。崖からの転落死もダメージ有効。</div>
+          <div class="item-meta">💡 マグネキャッチで金属製の足場を引っ張って敵を落とす応用も可能</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-panel" data-tips-panel="explore" style="display:none;">
+      <div class="item-grid">
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">パラセール直前にダッシュジャンプ</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">坂道や崖の縁でダッシュしてからジャンプすると勢いがついてパラセールを開ける高さになる。平地でも「ちょっとした段差＋ダッシュ」で空中弓矢が使えるようになる。</div>
+          <div class="item-meta">💡 馬から飛び降りてもスロー射撃が発動する</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">焚き火で上昇気流を作る</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">焚き火・炎属性の攻撃・草原の延焼などで炎を起こすと上昇気流が発生。パラセールで乗ると高く舞い上がれる。遮蔽物のない平地での高度稼ぎや、塔に上る手前での高度確保に活用。</div>
+          <div class="item-meta">💡 草原に矢を射込んで燃やすだけでOK。燃え広がりすぎに注意</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">雨天時は壁登りNG→迂回ルートを探す</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">雨の日は岩壁や金属面が滑って登れなくなる。反面、草が燃えない・敵が気づきにくい・一部の素材が出現するメリットがある。雨の日は戦闘・料理・素材集めに切り替えるのが効率的。</div>
+          <div class="item-meta">💡 雨音が騒音になるので隠密行動しやすい。しのび装備不要な場面も</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">シーカーセンサーを最大活用</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">ハテノ研究所でアップグレードするとハイラル図鑑に登録した素材・モンスター・宝箱などに反応させられる。祠・コログ・特定の素材採取に絞って使うと効率が大幅アップ。</div>
+          <div class="item-meta">💡 宝箱にセットしておくとフィールドのルピーや武器を取り逃しにくい</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">馬はファストトラベル後も最寄り馬宿に</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">どこかに乗り捨てた馬は、馬宿の「馬を呼ぶ」機能では呼べない（近くにいるときだけ有効）。ただしファストトラベル後に一番近い馬宿に行くと馬に乗ったまま転送されてくる場合がある。</div>
+          <div class="item-meta">💡 馬を手放す前に馬宿で登録しておくと迷子防止になる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">盾サーフィンで斜面高速移動</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">ジャンプしながらZLで盾を構えてAボタンで盾サーフィンが発動。雪山・砂丘など滑りやすい斜面では驚くほどのスピードで滑り降りられる。盾の耐久値を消費するので安い盾で代用が吉。</div>
+          <div class="item-meta">💡 盾サーフィン中にYボタンで攻撃も可能。移動しながら戦闘できる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">アイスメーカーで足場を作る</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">水面にアイスメーカーで氷柱を作り、その上に乗ってパラセールで飛ぶと平地でも高度を稼げる。川・湖での移動手段にもなり、空中弓矢のスロー射撃も使いやすくなる。</div>
+          <div class="item-meta">💡 氷柱を複数連続で作って跳び石のように渡ることも可能</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-panel" data-tips-panel="resource" style="display:none;">
+      <div class="item-grid">
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">赤い月の直前に料理でまとめ大成功</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">深夜23:30〜0:15ごろの赤い月の時間帯は料理が100%大成功になる。ハート+3・効果時間+5分・Lv+1などのボーナスが付くため、素材を温存したい場合はこの時間にまとめて料理するのが最効率。</div>
+          <div class="item-meta">💡 空が赤くなり始めたら鍋へダッシュ。5品連続で大成功を狙う</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">矢はボコブリンに撃たせて回収</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">弓を持ったボコブリンの群れの中心に立つと、ボコブリンが矢を撃ってくる。その矢を拾うと無限に木の矢が入手できる。矢不足のときの最速解決策。</div>
+          <div class="item-meta">💡 盾を構えながら立つと安全に回収できる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">削岩棒は鉱床専用に温存</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">削岩棒・砕岩棒は1スイングで鉱床を一撃破壊できる。通常武器で叩くより素材のドロップ数が増え、武器耐久の節約にもなる。戦闘には絶対使わず採掘専用にすること。</div>
+          <div class="item-meta">💡 デスマウンテンの隠し岩に常にリポップするので枯渇しない</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">蜂の巣は爆弾で安全採取</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">木についている蜂の巣に爆弾を投げ、起爆してから離れると矢を使わずに蜂の巣が採取できる。蜂蜜は料理の大成功素材として機能し、蜂は薬の素材になる。</div>
+          <div class="item-meta">💡 爆発直後は蜂が怒っているので少し待ってから拾う</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">料理して売ると2〜10倍の価値</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">素材をそのまま売るより、馬宿の鍋で料理してから売るほうがはるかに高く売れる。特に肉5個→シチューは200R以上になる場合も。金策の基本。</div>
+          <div class="item-meta">💡 ヘブラ山周辺で極上ケモノ肉を狩って馬宿で量産が定番の金策ルート</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">ドラゴンの素材は1日1個ずつ取れる</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">フロドラ・オルドラ・ネルドラは決まったルートを飛んでいる。1日1回、部位ごと（頭・爪・背中・尻尾）に1個ずつ素材が取れる。毎日ルーティンで採取すると角のかけらが安定供給される。</div>
+          <div class="item-meta">💡 矢で部位を撃つと確実に採取できる。ゼルダお知らせの祠でもフロドラを見かけられる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">夜光石10個→ダイヤモンド1個に交換</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">ゴロンシティのルルンに夜光石10個を持っていくとダイヤモンド1個に交換してくれる。夜光石は鉱床から大量に出るのでコスパ良く英傑武器修復用のダイヤモンドを確保できる。</div>
+          <div class="item-meta">💡 ルルンは夜だけ出現するので注意</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-panel" data-tips-panel="cooking" style="display:none;">
+      <div class="item-grid">
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">ドラゴン素材1個でLv3効果30分</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">フロドラ・オルドラ・ネルドラの「角のかけら」を料理に1個加えると、効果レベルが強制的にLv3になり、時間が30分に固定される。同時に100%大成功も発動。1個で最強の料理が完成する。</div>
+          <div class="item-meta">💡 「角のかけら」が最強。爪→牙→ウロコの順に効果が弱くなる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">素材のままより料理で販売が2〜10倍</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">素材を直接売るよりも料理にしてから売ると大幅に高値がつく。特に肉料理・魚料理は同じ素材でも料理後で倍以上の売値になるケースが多い。</div>
+          <div class="item-meta">💡 ハイラル米＋何か＝リゾット系は高値になりやすい</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">同系統の素材だけ混ぜる絶対ルール</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">「ツルギ（攻撃）」「ヨロイ（防御）」「ゴーゴー（移動）」など接頭語が同じ素材だけで料理する。違う系統を1つでも混ぜると全効果が消えてただの回復料理になる。</div>
+          <div class="item-meta">💡 「心配な時は同じ接頭語の食材5個」で確実な料理が完成</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">タマゴ・ハイラル米は効果時間延長</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">トリのタマゴ・ハイラル米・ハイラルダケ・フレッシュミルクは「効果なし素材」として料理に入れると30秒の時間延長のみが発生し、効果を消さずに済む。限られた素材を節約しつつ時間を伸ばせる。</div>
+          <div class="item-meta">💡 これらは馬宿の商人で購入可能。補充しやすいのもメリット</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">マックスドリアン5個でハート+20追加</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">マックスドリアン×5で作る料理はハート全回復に加え、黄色の一時的なハートを最大20個追加する。ハート上限の壁を超えられる唯一の手段。フィローネの塔北東で大量に採取可能。</div>
+          <div class="item-meta">💡 ガノン戦の直前に食べておくと事故防止に大きく貢献する</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">焚き火で朝まで待って天気リセット</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">雨で壁登りができないときは焚き火で「朝まで待つ」を選択すると天気がリセットされ晴れになることが多い。崖登り前に天気を操作する定番テクニック。</div>
+          <div class="item-meta">💡 焚き火は火打ち石＋木材でいつでも作れる</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tips-panel" data-tips-panel="env" style="display:none;">
+      <div class="item-grid">
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">炎属性装備で防寒・水で防熱</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">炎属性の武器を持っているだけで耐寒Lv1効果が発生する。耐寒Lv2が必要な雪山でも、炎の剣＋防寒防具1部位で対応可能。砂漠の暑さは水に浸かるだけで耐暑Lv2相当になる。</div>
+          <div class="item-meta">💡 装備を変えなくても武器を持ち替えるだけで耐性が変わる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">雷雨中は金属装備を外す</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">雷雨中に金属製の武器・盾・防具を装備していると雷が落ちやすくなり大ダメージ。金属装備は全部外して木・骨・布系に変える。雷の矢で周囲の金属に当てると連鎖感電させるのも活用可能。</div>
+          <div class="item-meta">💡 雷雨中は意図的に金属を使ってボコブリン拠点を一網打尽にするのも手</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">草原火事で一帯の素材を焼く</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">草原に炎の矢や炎武器で火をつけると、延焼した草むら全体から焼き野菜・焼き肉・焼き魚が一度に大量採取できる。特にタバンタ・フィローネの草原では大量の食材が一気に手に入る。</div>
+          <div class="item-meta">💡 風向きを考えて放火しないと自分も巻き込まれる</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">雨の日は隠密移動が楽になる</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">雨の日は騒音で敵の聴覚が下がり、しのび装備なしでも正面以外からなら気づかれにくい。ハイラル城の武器集め・素材採取など潜入系の行動は雨天時を狙うと効率アップ。</div>
+          <div class="item-meta">💡 夜10時以降＋雨の日の組み合わせが最も隠密向き</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">ハチを敵に向けてけしかける</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">ハチの巣を弓で落として敵集団の近くに誘導すると、ハチが敵を攻撃して大混乱。武器消費なしで敵を弱体化・分散させられる。採取前にこの方法で敵の数を減らす手も。</div>
+          <div class="item-meta">💡 爆弾で蜂の巣を壊すと蜂が出てくる。ハチをうまく誘導して利用</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">騎乗攻撃でクリティカル率UP</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">馬に乗りながら攻撃すると高確率でクリティカルヒットが出る。馬自体にも攻撃判定があり、ぶつかるだけで雑魚にダメージを与えられる。馬突撃→騎乗攻撃の組み合わせで序盤の敵を一掃可能。</div>
+          <div class="item-meta">💡 騎乗時はスタミナがほぼ不要なので持久戦でも有利</div>
+        </div>
+
+                <div class="item-card">
+          <div class="item-head"><span class="item-name">高所からの落下で敵にダメージ</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">高所で戦う場合、大剣のタメ攻撃で吹っ飛ばしたり、ビタロックで押し出すと落下ダメージが入り一撃撃破できることがある。崖際での戦闘は地形をうまく使うと消耗を大幅に抑えられる。</div>
+          <div class="item-meta">💡 ボコブリン・モリブリンは泳げないので水辺に落とすのも有効</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">テクニックの優先度</div>
+      <p>初心者がまず覚えるべき3つ：①<strong>空中弓矢のスローモーション</strong>（ヘッドショット前提の戦闘が成立する）②<strong>ジャスト回避ラッシュ</strong>（どんな強敵も安全に削れる）③<strong>赤い月の料理大成功</strong>（素材効率が2倍になる）。</p>
+      <p>この3つだけで序盤〜終盤の攻略がまったく変わってきます。</p>
+    </div>
+  </section>
+
+  <div class="divider">◆ ◆ ◆</div>
+
+  <!-- ドラゴンセクション -->
+  <section id="dragons">
+    <span class="section-num">05 / DRAGONS</span>
+    <h2>ドラゴン素材：3龍の周回ガイド</h2>
+    <p class="lead">オルドラ（炎）・フロドラ（雷）・ネルドラ（氷）の3龍は、角・爪・牙・ウロコの4種類の素材を落とします。特に「角のかけら」は料理に1個加えるだけでLv3効果＋30分維持＋大成功確定という最強素材。1日1回、部位ごとに1個ずつ入手できるので、ルーティンで回ると安定供給できます。</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-dragon-tab="basics">基礎知識</button>
+      <button class="tab-btn" data-dragon-tab="ordra">オルドラ（炎）</button>
+      <button class="tab-btn" data-dragon-tab="frodra">フロドラ（雷）</button>
+      <button class="tab-btn" data-dragon-tab="neldra">ネルドラ（氷）</button>
+      <button class="tab-btn" data-dragon-tab="route">3龍一括周回</button>
+    </div>
+
+    <div class="dragon-panel" data-dragon-panel="basics">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">出現の前提条件</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">メインチャレンジ「インパを訪ねて」をクリアしないと3龍とも出現しない。さらにネルドラだけは、ラネール山の知恵の泉で「ラネール山のお宝を探れ！」をクリアし、暴走状態のネルドラ体の4つの目玉を矢で撃って解放する必要がある。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">部位と素材の対応</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">矢を当てた部位で落ちる素材が決まる。角→角のかけら（最重要）、口→牙のかけら、爪→爪、胴体→ウロコ。角のかけらが欲しいなら、頭のツノ部分をピンポイントで狙うこと。少しでもズレると牙やウロコになる。</div>
+          <div class="item-meta">💡 空中弓矢スローモーション（ジャンプ中にZR）を使えばピンポイント狙撃が格段に楽</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">1回の出現で1素材のみ</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">1回の出現で入手できる素材は1個だけ。2本目の矢を当てても素材は落ちない。素材を入手したら焚き火で翌朝にし、再出現させるのが基本の周回サイクル。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">必要装備・準備</span><span class="badge badge-A">重要</span></div>
+          <div class="item-detail">弓：射程が長い「ツバメの弓」「ゲルドの弓」がおすすめ。焚き火用素材：薪の束＋炎属性武器（火打ち石でも可）。矢は木の矢で十分。各ドラゴンは属性の玉をまとっているので、触れないよう注意（オルドラ→耐火装備、フロドラ→雷ガード、ネルドラ→防寒装備）。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">素材はまとめて回収できる</span><span class="badge badge-B">便利</span></div>
+          <div class="item-detail">ドロップした素材はフィールドに残り続ける（遠くに移動したりワープしない限り）。「射る→焚き火で時間経過→また射る」を数回繰り返してから、最後にまとめて回収するのも効率的。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dragon-panel" data-dragon-panel="ordra" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">オルドラ ─ 基本情報</span><span class="badge badge-S">炎の龍</span></div>
+          <div class="item-detail">オルディン山脈〜タバンタ辺境を飛行する炎の龍。周囲に炎の玉をまとっており、触れると燃焼ダメージ。耐火装備（炎の剣士シリーズ）のセット効果か「燃えず薬」で対策する。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">おすすめ周回ポイント：タバンタ大橋</span><span class="badge badge-S">最効率</span></div>
+          <div class="item-detail">①シャオ・ヨの祠にワープ → ②タバンタ大橋の中央に移動 → ③焚き火で朝5:00にする → ④北方向を見ると、オルドラがククジャ谷を通って橋に向かってくる → ⑤橋の上からパラセールで飛び降り、空中弓矢スローで角を狙撃 → ⑥素材が落ちたら回収。</div>
+          <div class="item-meta">💡 橋の上からウロコ狙いなら直接狙撃も可能。角や爪はパラセールで近づく必要あり</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">別ルート：オルディンの大化石</span><span class="badge badge-A">安定</span></div>
+          <div class="item-detail">①グ・アチトーの祠にワープ → ②西のオルディンの大化石まで移動 → ③焚き火で夜にし、深夜1:00頃まで待つ → ④上空からオルドラが降りてくるので、地表近くに来たら狙撃。タバンタ大橋より待ち時間はあるが、地表から狙える安定ルート。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dragon-panel" data-dragon-panel="frodra" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">フロドラ ─ 基本情報</span><span class="badge badge-S">雷の龍</span></div>
+          <div class="item-detail">フィローネ地方〜ゲルド高地を飛行する雷の龍。周囲に電気の玉をまとっており、触れると感電＋武器ドロップの危険がある。ラバー装備のセット効果か「ビリビリ薬」で対策。金属製の弓は感電するので木製の弓（一心の弓など）が安全。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">おすすめ周回ポイント：ウライト湖</span><span class="badge badge-S">最効率</span></div>
+          <div class="item-detail">①サイ・ウートの祠にワープ → ②レイクサイド馬宿方面に移動 → ③大きな木の下（雨でも焚き火が消えない）で焚き火を作り、朝5:00にする → ④ウライト湖からフロドラが出現 → ⑤上昇気流に乗ってパラセールで上昇 → ⑥空中弓矢スローで角を狙撃。</div>
+          <div class="item-meta">💡 フロリア橋から狙うルートもある。AM5:40頃に上昇気流が発生するのでそれに乗る</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">別ルート：フロリア橋</span><span class="badge badge-A">安定</span></div>
+          <div class="item-detail">レイクサイド馬宿で朝まで待機 → フロドラを確認したらフロリア橋の中央に移動 → AM5:40頃に上昇気流が発生するのでパラセールで上昇して狙撃。素材が湖に落ちやすいのでフロリア湖のほうが回収しやすい。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dragon-panel" data-dragon-panel="neldra" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ネルドラ ─ 基本情報</span><span class="badge badge-S">氷の龍</span></div>
+          <div class="item-detail">ラネール地方のラネール山周辺を飛行する氷の龍。周囲に氷の玉をまとっており、触れると凍結ダメージ。リト装備のセット効果（凍結無効）で対策する。出現場所が雪山のため防寒対策も必須。3龍の中で最も周回が面倒。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">前提条件（他の2龍と異なる）</span><span class="badge badge-S">超重要</span></div>
+          <div class="item-detail">ネルドラだけは「ラネール山のお宝を探れ！」の祠チャレンジをクリアしないと空を飛び回らない。ラネール山の知恵の泉に行き、暴走中のネルドラの体にある4つの目玉を矢で射って解放する必要がある。これを済ませないと周回不可。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">おすすめ周回ポイント：ジター・サミの祠</span><span class="badge badge-S">最効率</span></div>
+          <div class="item-detail">①ジター・サミの祠にワープ → ②知恵の泉方面に移動 → ③焚き火で朝5:00にする → ④東側のラネール山方向を見るとネルドラが向かってくる → ⑤パラセールで飛び出し、空中弓矢スローで角を狙撃。AM6:00頃にラネール参道付近を通過するタイミングが狙い目。</div>
+          <div class="item-meta">💡 ウインタ島方面に飛び降りると足元を飛ぶネルドラを見つけやすい</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">別ルート：ラネール参道</span><span class="badge badge-A">安定</span></div>
+          <div class="item-detail">ダウ・ナエの祠にワープ → 滝を遡り、ラネール参道沿いを進む → 木の下で焚き火を作って朝5:00にする → 東のラネール山方向からネルドラが来るのを待つ → パラセールで接近して狙撃。地上から近い位置を通過するのでタバンタ大橋に近い安定感。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dragon-panel" data-dragon-panel="route" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">1日で3龍すべてを回る周回ルート</span><span class="badge badge-S">最効率</span></div>
+          <div class="item-detail">レイクサイド馬宿をスタート地点にして、1つのゲーム内の日で3龍すべての素材を回収できる。以下の順番で回ると無駄がない。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">STEP 1：フロドラ（朝）</span><span class="badge badge-A">AM5:00〜</span></div>
+          <div class="item-detail">サイ・ウートの祠にワープ → レイクサイド馬宿で朝まで時間をつぶす → AM5:40頃、フロリア橋の中央で上昇気流に乗ってフロドラを狙撃 → 素材回収。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">STEP 2：オルドラ（朝〜午前中）</span><span class="badge badge-A">AM7:50〜</span></div>
+          <div class="item-detail">フロドラ素材回収後、シャオ・ヨの祠にワープ → タバンタ大橋中央に移動 → AM7:50頃に上昇気流が発生 → パラセールで上昇してオルドラを狙撃 → 素材回収。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">STEP 3：ネルドラ（夜）</span><span class="badge badge-A">夜〜翌朝</span></div>
+          <div class="item-detail">オルドラ素材回収後、ジター・サミの祠にワープ → 焚き火で夜にする → 知恵の泉からターム岬方面にパラセールで飛ぶ → ネルドラが通過するのを狙撃 → 素材回収。これで1日3龍コンプリート。</div>
+        </div>
+
+      </div>
+
+      <div class="info-box" style="margin-top:24px;">
+        <div class="info-box-title">注意事項</div>
+        <p>別の場所で龍を目撃した直後に、その龍の出現ポイントにワープしても出現しない。一度別の龍を狙うか、時間をおいてから戻ること。</p>
+        <p>雨の日は焚き火が使えない。木の下に焚き火を作っておくか、雨を避けられる場所を確保しておく。</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">素材の価値ランキング</div>
+      <p><strong>角のかけら</strong>（最重要）：料理に1個入れるだけでLv3効果＋30分＋大成功確定。売値150〜300Rだが絶対売るな。</p>
+      <p><strong>爪</strong>：料理に入れるとLv2〜3効果＋効果時間延長。角の代替として使える。</p>
+      <p><strong>牙のかけら</strong>：料理効果は角より劣るが、防具強化素材として需要あり。</p>
+      <p><strong>ウロコ</strong>：入手が簡単（胴体に当てればOK）。祠チャレンジでの泉への奉納にも使う。余剰分は売却可（20R）。</p>
+    </div>
+  </section>
+
+
+</main>
+
+
+<footer>
+  <p>BotW Field Guide</p>
+  <p style="opacity: 0.7;">素材売却・装備・料理の実用ガイド / 2026年5月作成</p>
+  <p style="opacity: 0.7;">出典: GameWith, ゲームエイト, 攻略大百科, おばさんのゲームメモ ほか</p>
+</footer>
+
+<script>
+// 素材セクション：売却カテゴリでフィルタリング
+document.querySelectorAll('[data-mat-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-mat-filter]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.matFilter;
+    const cards = document.querySelectorAll('#mat-content .item-card');
+
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // 見出しの表示制御（該当アイテムが0なら見出しも隠す）
+    document.querySelectorAll('.mat-heading').forEach(heading => {
+      const group = heading.nextElementSibling;
+      if (group && group.classList.contains('mat-group')) {
+        const visibleCards = group.querySelectorAll('.item-card:not(.hidden)');
+        heading.style.display = visibleCards.length > 0 ? '' : 'none';
+        group.style.display = visibleCards.length > 0 ? '' : 'none';
+      }
+    });
+  });
+});
+
+// 装備セクション：タブ切替
+document.querySelectorAll('[data-eq-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-eq-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const target = btn.dataset.eqTab;
+    document.querySelectorAll('[data-eq-panel]').forEach(panel => {
+      panel.style.display = panel.dataset.eqPanel === target ? '' : 'none';
+    });
+  });
+});
+
+
+// 防具サブタブ：装備タイプフィルタ
+document.querySelectorAll('[data-armor-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-armor-filter]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.armorFilter;
+    const cards = document.querySelectorAll('[data-armor-type]');
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.armorType === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// 武器サブタブ：武器種フィルタ
+document.querySelectorAll('[data-weapon-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-weapon-filter]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.weaponFilter;
+    const cards = document.querySelectorAll('[data-weapon-type]');
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.weaponType === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// 料理セクション：進行度タブ
+document.querySelectorAll('[data-stage-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-stage-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const target = btn.dataset.stageTab;
+    document.querySelectorAll('[data-stage-panel]').forEach(panel => {
+      panel.style.display = panel.dataset.stagePanel === target ? '' : 'none';
+    });
+
+    // タブ切り替え時にカテゴリフィルタを再適用
+    applyCookFilter();
+  });
+});
+
+// 料理セクション：カテゴリフィルタ
+function applyCookFilter() {
+  const activeFilter = document.querySelector('[data-cat-filter].active');
+  const filter = activeFilter ? activeFilter.dataset.catFilter : 'all';
+
+  // 表示中のパネルだけにフィルタを適用
+  document.querySelectorAll('[data-stage-panel]').forEach(panel => {
+    if (panel.style.display === 'none') return;
+    const cards = panel.querySelectorAll('[data-cook-cat]');
+    let visibleCount = 0;
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.cookCat === filter) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // 結果が0件なら案内メッセージ
+    let emptyMsg = panel.querySelector('.empty-msg');
+    if (visibleCount === 0) {
+      if (!emptyMsg) {
+        emptyMsg = document.createElement('div');
+        emptyMsg.className = 'empty-msg';
+        emptyMsg.textContent = 'この進行度には該当カテゴリの料理がありません。別の進行度タブもご覧ください。';
+        panel.querySelector('.cook-grid').after(emptyMsg);
+      }
+      emptyMsg.style.display = '';
+    } else if (emptyMsg) {
+      emptyMsg.style.display = 'none';
+    }
+  });
+}
+
+document.querySelectorAll('[data-cat-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-cat-filter]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyCookFilter();
+  });
+});
+
+// テクニックセクション：タブ切替
+document.querySelectorAll('[data-tips-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-tips-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.dataset.tipsTab;
+    document.querySelectorAll('[data-tips-panel]').forEach(panel => {
+      panel.style.display = panel.dataset.tipsPanel === target ? '' : 'none';
+    });
+  });
+});
+
+
+// ドラゴンセクション：タブ切替
+document.querySelectorAll('[data-dragon-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-dragon-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.dataset.dragonTab;
+    document.querySelectorAll('[data-dragon-panel]').forEach(panel => {
+      panel.style.display = panel.dataset.dragonPanel === target ? '' : 'none';
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>
