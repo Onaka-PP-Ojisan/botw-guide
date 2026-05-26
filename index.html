@@ -534,6 +534,8 @@
       <a href="#cooking" class="nav-link">料理</a>
       <a href="#tips" class="nav-link">テクニック</a>
       <a href="#dragons" class="nav-link">ドラゴン</a>
+      <a href="#enemies" class="nav-link">敵対策</a>
+      <a href="#money" class="nav-link">金策</a>
     </nav>
   </div>
 </header>
@@ -571,6 +573,16 @@
         <span class="toc-num">05</span>
         <div class="toc-title">ドラゴン素材周回</div>
         <div class="toc-desc">3龍の出現場所と効率周回</div>
+      </a>
+      <a href="#enemies" class="toc-card">
+        <span class="toc-num">06</span>
+        <div class="toc-title">大型モンスター対策</div>
+        <div class="toc-desc">ライネル・ヒノックス・イワロック</div>
+      </a>
+      <a href="#money" class="toc-card">
+        <span class="toc-num">07</span>
+        <div class="toc-title">金策ガイド</div>
+        <div class="toc-desc">効率的なルピー稼ぎの方法</div>
       </a>
     </div>
   </div>
@@ -1729,6 +1741,448 @@
   </section>
 
 
+  <div class="divider">◆ ◆ ◆</div>
+
+  <!-- 敵対策セクション -->
+  <section id="enemies">
+    <span class="section-num">06 / BOSS ENEMIES</span>
+    <h2>大型モンスター：場所・素材・倒し方</h2>
+    <p class="lead">ハイラルには倒すと貴重な素材を落とす大型モンスターが点在しています。ライネル4種・ヒノックス4種・イワロック6種・モルドラジーク2種を中心に、出現場所と倒し方をカテゴリ別にまとめました。すべて赤い月で復活します。</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-enemy-tab="lynel">ライネル</button>
+      <button class="tab-btn" data-enemy-tab="hinox">ヒノックス</button>
+      <button class="tab-btn" data-enemy-tab="talus">イワロック</button>
+      <button class="tab-btn" data-enemy-tab="molduga">モルドラジーク</button>
+      <button class="tab-btn" data-enemy-tab="guardian">ガーディアン</button>
+    </div>
+
+    <div class="enemy-panel" data-enemy-panel="lynel">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ライネルの基本仕様</span><span class="badge badge-S">基礎知識</span></div>
+          <div class="item-detail">半人半獣の最強モンスター。赤髪→青髪→白髪→白銀の4段階で強さが変化する。ゲーム進行度（神獣解放数）に応じて、特定の場所以外のライネルは自動的に強い色へ置き換わる。神獣4体解放後は固定スポット以外すべて白銀になる。倒すと武器1個＋角・ひづめ・肝が確定ドロップ。</div>
+          <div class="item-meta">💡 雷獣山のライネルだけは進行度に関係なく赤髪ライネル固定なので、序盤の素材集めに最適</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">赤髪ライネル（通常）</span><span class="badge badge-A">体力2000</span></div>
+          <div class="item-detail">ライネルの最も基本的な個体。攻撃力は十分高いが、ジャスト回避ラッシュ＋ヘッドショットで安定撃破できる。雷獣山頂上に固定出現。ドロップ：ライネルの角・ひづめ・肝・蹄鉄・盾・剣／大剣／槍。</div>
+          <div class="item-meta item-loc">雷獣山頂上（固定）、序盤のハイラル各地</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">青髪ライネル</span><span class="badge badge-A">体力2500</span></div>
+          <div class="item-detail">赤髪より一段強い個体。攻撃モーションが速くなる。神獣2〜3体解放後に出現。ハイラル城の三の丸内は進行度問わず青ライネル固定で、ウツシエ撮影や図鑑登録に便利。ドロップ：上位武器＋通常素材。</div>
+          <div class="item-meta item-loc">ハイラル城三の丸（固定）、ヘブラ山、フィローネ地方ほか</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">白髪ライネル</span><span class="badge badge-S">体力3750</span></div>
+          <div class="item-detail">攻撃力・防御力ともにさらに強化された個体。火の玉攻撃や強力な突進攻撃が脅威。ドロップする武器の攻撃力も大幅アップ。神獣すべて解放後の主流個体（白銀以外のスポット）。</div>
+          <div class="item-meta item-loc">タバンタ大橋周辺、ハイラル平原各地</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">白銀のライネル</span><span class="badge badge-S">体力5000・最強</span></div>
+          <div class="item-detail">ライネル最強種。攻撃力78の剛剣など最高クラスの武器をドロップ。素材ドロップ数も増加し、ライネルの肝が2個出ることも。蛮族装備★4＋攻撃Lv3料理＋ヘッドショット連射で挑むのが鉄則。</div>
+          <div class="item-meta item-loc">闘技場跡地、ガノンの城周辺、ゲルド砂漠各地（神獣解放後）</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">必勝パターン：3段ヘッドショット</span><span class="badge badge-S">攻略</span></div>
+          <div class="item-detail">①ライネルに気づかれる前に弓で頭を狙撃→怯む→②走って腹の下に潜り込みYボタン乗り→③しがみつき攻撃でダメージ→④振り落とされたらバク宙→⑤ジャスト回避ラッシュ→⑥距離をとってまたヘッドショット、のループ。蛮族装備＋攻撃料理で15分以内に白銀でも撃破可能。</div>
+          <div class="item-meta">💡 木製の盾＋雷の矢を持ち込まないこと。雷雨時は金属装備を全部外す</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="enemy-panel" data-enemy-panel="hinox" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ヒノックスの基本仕様</span><span class="badge badge-S">基礎知識</span></div>
+          <div class="item-detail">巨大な一つ目の魔物で、全40体がハイラル各地に固定配置されている。普段は寝ているので不意打ちでスタートできる。弱点は目で、矢を当てると尻もちをついてもがく＝大ダメージのチャンス。首輪にぶら下がっている武器・盾を奪える。大妖精の涙が極稀にドロップ（蛮族★4強化に必要）。</div>
+          <div class="item-meta">💡 寝ているヒノックスからは首輪の武器を奪ってから戦闘開始するのが定番</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">通常ヒノックス（赤）</span><span class="badge badge-A">体力500</span></div>
+          <div class="item-detail">最も弱い個体。ハイラル各地の森林地帯に多数。ドロップ：ヒノックスの牙・ヒノックスの足の爪・首輪武器1個。中盤の蛮族強化（★1→★2）でヒノックス系素材は不要だが、序盤のハイリア兵★4強化や料理素材として使う。</div>
+          <div class="item-meta item-loc">フィローネ地方、ハイラル平原、デクの木周辺など各地</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">青ヒノックス</span><span class="badge badge-A">体力800</span></div>
+          <div class="item-detail">中位のヒノックス。攻撃力アップ、首輪に強めの武器を装備。ドロップ：ヒノックスのひざ蓋・ヒノックスの足の爪・武器。デグドの吊り橋など決まった場所に出現。</div>
+          <div class="item-meta item-loc">デグドの吊り橋、アッカレ地方、ヘブラ地方ほか</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">黒ヒノックス</span><span class="badge badge-S">体力1500</span></div>
+          <div class="item-detail">最強種のヒノックス。攻撃力が高く、首輪には王家武器など強力なものが下がっていることも。ドロップ：ヒノックスの肝（★4強化用）・足の爪・最上位武器。大妖精の涙のドロップ率もこの種が最も高い。</div>
+          <div class="item-meta item-loc">フィローネの樹海、ハイラル城周辺、デスマウンテンほか</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">スタルヒノックス</span><span class="badge badge-S">夜出現・体力360</span></div>
+          <div class="item-detail">夜にだけ起き上がる骨のヒノックス。頭部を破壊すると一撃撃破できる。ドロップ：ヒノックスの牙・スタルの腕の骨など。ハイリアの盾の入手にスタルヒノックスを倒すクエストがある。</div>
+          <div class="item-meta item-loc">ハイラル城下町跡（ハイリアの盾の場所）、夜間限定で各地</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">必勝パターン：目→乗る→殴る</span><span class="badge badge-S">攻略</span></div>
+          <div class="item-detail">①弓で目を撃つ→尻もちをついてもがく→②ヒノックスの腹の上に登る（しがみつき）→③腹の上で武器を振って大ダメージ→④振り落とされたら距離をとる→⑤起き上がるタイミングで再度目に矢。両手剣の回転攻撃は腹の上で特に効果的。</div>
+          <div class="item-meta">💡 黒ヒノックスは大妖精の涙が出ることがあるので赤い月のたびに巡回するのも良い</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="enemy-panel" data-enemy-panel="talus" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">イワロックの基本仕様</span><span class="badge badge-S">基礎知識</span></div>
+          <div class="item-detail">岩でできた巨人モンスター。各地に約40体が固定配置されている。普段は岩のフリをしていて、近づくと起き上がる。弱点は頭頂部の鉱床。両手系のハンマー武器（コログの棍棒など）でタメ攻撃すると大ダメージ。倒すと鉱石類を大量にドロップする。</div>
+          <div class="item-meta">💡 削岩棒・砕岩棒で頭頂部を叩くと最効率。蛮族装備＋砕岩棒で1〜2回殴れば撃破可能</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">イワロック（通常）</span><span class="badge badge-A">体力300</span></div>
+          <div class="item-detail">最も基本的な個体。普通の岩で構成されており、頭頂部に鉱床がある。ドロップ：石・火打ち石・琥珀・オパール・夜光石など。序盤の宝石素材集めに最適。</div>
+          <div class="item-meta item-loc">フィローネ地方、ハイラル平原、ラネール湿原ほか各地</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">イシロック（炎）</span><span class="badge badge-A">体力800・炎属性</span></div>
+          <div class="item-detail">赤い溶岩でできたイワロック。デスマウンテン周辺に出現。触れると炎ダメージ、耐火装備必須。ドロップ：ルビーが豊富、火打ち石、夜光石。</div>
+          <div class="item-meta item-loc">デスマウンテン周辺、ゴロンシティ周辺</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">マグロック（雪）</span><span class="badge badge-A">体力800・氷属性</span></div>
+          <div class="item-detail">氷でできたイワロック。ヘブラ山脈・タバンタ雪原に出現。触れると凍結ダメージ、防寒＋凍結無効装備必須。ドロップ：サファイア、ダイヤモンドの確率もあり。</div>
+          <div class="item-meta item-loc">ヘブラ山脈、タバンタ雪原、ゲルド雪原</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">カチロック（電気）</span><span class="badge badge-A">体力800・雷属性</span></div>
+          <div class="item-detail">雷を帯びたイワロック。ゲルド地方の雷雨エリアに出現。攻撃に雷ダメージが乗るので雷ガード装備必須。ドロップ：トパーズが豊富。</div>
+          <div class="item-meta item-loc">ゲルド高地、ナボールビックなど</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">マクロック（稀少・銅）</span><span class="badge badge-S">体力1500</span></div>
+          <div class="item-detail">青銅色の稀少イワロック。攻撃力・防御力が高い。ドロップ：オパール・ルビー・サファイア・トパーズ・ダイヤモンドなど高級鉱石を大量に落とす。タバンタ大橋馬宿の北のカラカラ岩の頂上に固定出現する個体が有名。</div>
+          <div class="item-meta item-loc">タバンタ大橋馬宿北、サトリ山周辺ほか少数の固定スポット</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ガチロック（稀少・金）</span><span class="badge badge-S">体力1500・最強</span></div>
+          <div class="item-detail">最強のイワロック種。金色に輝く岩でできており、攻撃力・体力ともに最大級。ドロップ：ダイヤモンドを含むあらゆる宝石、星のかけらが落ちることも。ヘブラ大山頂上などに固定出現。</div>
+          <div class="item-meta item-loc">ヘブラ大山頂上、ヒガッカレ馬宿北の山頂ほか</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">必勝パターン：頂上の鉱床を狙う</span><span class="badge badge-S">攻略</span></div>
+          <div class="item-detail">①磁石やビタロックで体を回り込む→②背中にしがみつく→③頭頂部の鉱床まで登る→④両手剣のタメ攻撃や削岩棒で連打→⑤振り落とされる前にパラセールで脱出→⑥また登る。属性持ちは対応耐性装備か属性武器で攻撃すると分裂時のリスクが減る。</div>
+          <div class="item-meta">💡 ハンマー（コログの棍棒など）系武器なら頭頂部攻撃で約500ダメージ。砕岩棒で2〜3発撃破可能</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="enemy-panel" data-enemy-panel="molduga" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">モルドラジークの基本仕様</span><span class="badge badge-S">基礎知識</span></div>
+          <div class="item-detail">砂の中を泳ぐ巨大魚モンスター。ゲルド砂漠とゲルド砂漠中央部の4箇所に固定出現。地上ではなく砂の中に潜っており、足音で察知して飛び出してくる。岩の上に立てば安全圏。爆弾矢か通常爆弾で誘導して倒す。</div>
+          <div class="item-meta">💡 ゲルド砂漠の昼間は暑さガード必須。早朝・夜間の方が動きやすい</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">モルドラジーク（4体）</span><span class="badge badge-A">体力1500</span></div>
+          <div class="item-detail">ゲルド砂漠の4箇所に固定出現。ドロップ：モルドラジークの中落ち（料理素材）、宝石類（オパール・トパーズ等）。攻撃力アップ料理＋爆弾矢で安定撃破可能。</div>
+          <div class="item-meta item-loc">ゲルド砂漠：①砂漠北部②砂漠中央③ナボールの跡地④ゲルド大渓谷</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">必勝パターン：岩の上から爆弾矢</span><span class="badge badge-S">攻略</span></div>
+          <div class="item-detail">①砂漠内の岩や高台に登る→②爆弾矢を砂の上に撃つ→③モルドラジークが釣られて飛び出す→④口を開けたタイミングで弓ヘッドショット→⑤砂に潜るのを待ってまた爆弾矢、のループ。通常爆弾（リモコンバクダン）を地面に置いて爆発させてもOK。</div>
+          <div class="item-meta">💡 ゲルド砂漠の岩や残骸の上は安全地帯。砂の上に降りなければ攻撃されない</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="enemy-panel" data-enemy-panel="guardian" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ガーディアンの基本仕様</span><span class="badge badge-S">基礎知識</span></div>
+          <div class="item-detail">古代シーカー族の機械兵器。ビームを撃ってくる「歩行型」「飛行型」「据置型」「朽ちた型」など複数種類が存在。倒すと古代素材（ネジ・バネ・歯車・シャフト・コア・巨大なコア）を大量ドロップ。古代兵装シリーズの強化に必須。</div>
+          <div class="item-meta">💡 盾パリィでビーム反射すると即撃破。タイミングは目が赤く光った瞬間にZL</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">歩行型ガーディアン</span><span class="badge badge-S">体力1500</span></div>
+          <div class="item-detail">タコのような4本足の歩行型。ハイラル城周辺、ハテノ古代研究所跡、力の試練の祠などに出現。ドロップ：古代のネジ・バネ・歯車・シャフト・コア。最も多く出現し、古代素材集めの主力。</div>
+          <div class="item-meta item-loc">ハイラル城周辺、ハテノ古代研究所跡地、各地の力の試練祠</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">飛行型ガーディアン</span><span class="badge badge-S">体力500・空中</span></div>
+          <div class="item-detail">プロペラで飛行する小型ガーディアン。ハイラル城・アッカレ古代研究所周辺などに出現。ドロップに「古代の巨大なコア」を含むことが多く、古代兵装★4強化の必須狩猟対象。</div>
+          <div class="item-meta item-loc">ハイラル城内、アッカレ古代研究所周辺、ハイラル城下町跡</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">据置型ガーディアン</span><span class="badge badge-A">不動・砲台型</span></div>
+          <div class="item-detail">壁や床に固定された砲台型。動かないが射程内に入ると正確なビームを連射してくる。盾パリィで反射する練習に最適。倒すと歩行型と同様の素材ドロップ。</div>
+          <div class="item-meta item-loc">ハイラル城内、各地の祠付近、シーカー塔の周辺</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">朽ちたガーディアン（青）</span><span class="badge badge-A">弱体化版</span></div>
+          <div class="item-detail">機能停止しているガーディアン。攻撃してこないが、近づくとビーム1発撃ってくる弱体個体もある。ハイラル平原各地に散らばっており、古代素材集めの初心者向け対象。</div>
+          <div class="item-meta item-loc">ハイラル平原各地、ハテノ古代研究所周辺</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">必勝パターン：盾パリィで一撃</span><span class="badge badge-S">攻略</span></div>
+          <div class="item-detail">①ガーディアンと向き合い、目が赤く光ったらZLで盾を構える→②着弾の瞬間にAボタンで盾パリィ→③ビーム反射でガーディアンに大ダメージ（多くの場合一撃撃破）。古代兵装の盾なら反射判定が広く、失敗しても木の盾で代用可能。練習用には据置型がおすすめ。</div>
+          <div class="item-meta">💡 ガーディアンの目（一つ目の中央）を矢で撃つと怯む。距離があるなら遠距離狙撃も有効</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">大型モンスター攻略の共通テクニック</div>
+      <p><strong>赤い月で全復活</strong>：すべての大型モンスターは赤い月の夜に復活する。素材集めのルーティンを作っておくと効率的。</p>
+      <p><strong>不意打ち＝3倍ダメージ</strong>：寝ているヒノックスや遠くから気づかれていないライネルには、しのび装備＋しのび薬で背後から不意打ちを決めると初撃が3倍ダメージ。</p>
+      <p><strong>武器の修正値を引いてから挑む</strong>：拾った武器に「攻撃力UP大」が付いていれば実質1.5倍の火力。強敵戦の前に良い修正値の武器を確保しておく。</p>
+      <p><strong>料理は最低3種類常備</strong>：①攻撃力Lv3料理（30分）②防御力Lv3料理（30分）③マックスドリアン5個（保険回復）。これがあれば大抵の強敵戦は安定する。</p>
+    </div>
+
+    <div class="info-box" style="margin-top:16px;">
+      <div class="info-box-title">どの順番で挑むべきか</div>
+      <p>初心者は<strong>イシロック・マグロック・カチロック</strong>から（鉱床狙いで安全）→次に<strong>赤髪ライネル（雷獣山）</strong>で蛮族素材→慣れたら<strong>ヒノックス40体巡回</strong>で大妖精の涙狙い→最後に<strong>白銀ライネル＆ガチロック</strong>でやり込み素材という流れが鉄板。</p>
+    </div>
+  </section>
+
+
+  <div class="divider">◆ ◆ ◆</div>
+
+  <!-- 金策セクション -->
+  <section id="money">
+    <span class="section-num">07 / MONEY</span>
+    <h2>金策：効率的なルピー稼ぎ</h2>
+    <p class="lead">ブレワイでは大妖精の泉の解放（合計11,600R）、家の購入（4,400R）、防具購入など、ルピーが必要になる場面が多々あります。進行度に応じた効率的な金策方法をカテゴリ別にまとめました。</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-money-tab="early">序盤</button>
+      <button class="tab-btn" data-money-tab="mid">中盤</button>
+      <button class="tab-btn" data-money-tab="late">終盤</button>
+      <button class="tab-btn" data-money-tab="minigame">ミニゲーム</button>
+      <button class="tab-btn" data-money-tab="usage">使い道</button>
+    </div>
+
+    <div class="money-panel" data-money-panel="early">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">鉱床破壊で鉱石売り</span><span class="badge badge-S">最重要</span></div>
+          <div class="item-detail">フィールドに散らばる黒くキラキラ光る鉱床を、リモコンバクダンや鉄のハンマー、削岩棒で破壊。1個から琥珀・オパール・夜光石が複数ドロップ。琥珀（30R）・オパール（60R）を中心に序盤の主力。鉱床は赤い月で復活する。</div>
+          <div class="item-meta">💡 デスマウンテン中腹にはルビー鉱床が多数。耐火装備があればここが最効率</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">イシロック討伐（バクダンで一撃）</span><span class="badge badge-S">最効率</span></div>
+          <div class="item-detail">序盤のイシロック（炎のイワロック）はリモコンバクダンで一撃撃破できる。倒すと琥珀・オパール・ルビーなどを大量ドロップ。武器を消費せずに大量の鉱石を回収できる。デスマウンテン周辺で何体も狙える。</div>
+          <div class="item-meta item-loc">デスマウンテン周辺（耐火装備or耐火料理必須）</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">フィールド宝石採取</span><span class="badge badge-A">安定</span></div>
+          <div class="item-detail">ハイラル平原の高台、ヘブラ山の崖、サトリ山などには鉱床が密集している場所がある。シーカーセンサーを「夜光石」「ルビー」などにセットすると効率アップ（センサーアップグレード後）。1巡で200〜500R程度稼げる。</div>
+          <div class="item-meta">💡 サトリ山頂上の周辺は鉱床と動物が大量に出る穴場スポット</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">魔物素材売り（雑魚討伐）</span><span class="badge badge-A">日常的</span></div>
+          <div class="item-detail">フィールドでボコブリン・モリブリン・リザルフォスなどを倒すと素材ドロップ。1個2〜30Rと安いが、進行中に勝手にたまる。料理ポーチに入れず売却専用素材として整理しておくと貯まりやすい。</div>
+          <div class="item-meta">💡 ボコブリン拠点をしのび薬で奇襲すれば、武器奪取＋素材回収＋ルピー入手の三重取り</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">料理にして売る（最重要原則）</span><span class="badge badge-S">基本ルール</span></div>
+          <div class="item-detail">素材をそのまま売るより、馬宿の鍋で料理にしてから売ると2〜10倍の高値で売れる。特に肉系・魚系は料理化必須。「極上ケモノ肉×4＋ハイラル米×1」のシチューは1個210R以上で売れる。</div>
+          <div class="item-meta">💡 効果なし素材（リンゴ・タマゴ・ハイラル米）と組み合わせると味付けで時間延長＋値段アップ</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="money-panel" data-money-panel="mid" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ヘブラ山で極上ケモノ肉量産</span><span class="badge badge-S">最効率</span></div>
+          <div class="item-detail">ヘブラ山脈には極上ケモノ肉を落とすシカ・ヤギ・クマが密集している。ヘッドショットで一撃撃破→死体から極上ケモノ肉を回収→馬宿でシチューを作って売却の循環。1時間で5000〜10000R稼げる定番ルート。</div>
+          <div class="item-meta item-loc">ヘブラ山脈、ゲルド雪原（雪山なので防寒装備必須）</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ゴロンシティのラメラに鉱石売り</span><span class="badge badge-S">高単価</span></div>
+          <div class="item-detail">炎の神獣クリア後、ゴロンシティの宝石商ラメラのミニチャレンジをクリアすると、宝石を通常より高値で買い取ってくれる。日替わりで対象鉱石が変わるが、ルビーやサファイアを10個単位で売ると大きな利益。</div>
+          <div class="item-meta">💡 イシロック・マグロックなどを倒して10個単位で蓄えておくと一気に売れる</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">イチカラ村のジョータリ建材売り</span><span class="badge badge-A">クエスト</span></div>
+          <div class="item-detail">イチカラ村建設中、建材（木材）を集めて運ぶクエストがある。完了後もイチカラ村のオークションで建材を売ると収入になる。木の伐採は両手剣のスキル消費なしで進められる。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">マモノエキスでバクチ料理</span><span class="badge badge-A">運次第</span></div>
+          <div class="item-detail">マモノショップで購入できるマモノエキス（300R）を料理に入れると、効果時間がランダムで1分・10分・30分のいずれかになる。30分が出れば素材温存になるが、運要素強い。安定はしない。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">夜光石→ダイヤモンド交換</span><span class="badge badge-A">中盤の定番</span></div>
+          <div class="item-detail">ゴロンシティのルルン（夜間出現）に夜光石10個を持っていくとダイヤモンド1個に交換可能。ダイヤモンド（500R）として売れば、夜光石（70R）10個＝700Rよりは劣るが、英傑武器の修復に使う場合は非常に有用。</div>
+          <div class="item-meta">💡 ルピー目的では直接夜光石を売ったほうが10R得。ダイヤモンドは武器修復・防具強化用に</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="money-panel" data-money-panel="late" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">フロドラの角狩り（最高効率）</span><span class="badge badge-S">時給45,000R</span></div>
+          <div class="item-detail">フィローネ地方のウライト湖でフロドラの「角のかけら」（300R）を狙撃して回収する金策。1時間で約45,000Rに達するとも言われる正攻法では最高効率の方法。角のかけらは料理素材としても最強なので、売らずに料理用に温存するのも選択肢。</div>
+          <div class="item-meta item-loc">サイ・ウートの祠ワープ→フロリア橋（朝5:40）。詳細はドラゴンセクション参照</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">3龍周回ループ</span><span class="badge badge-S">高効率</span></div>
+          <div class="item-detail">フロドラ→オルドラ→ネルドラを1日で回り、それぞれの角のかけら（300R×3＝900R）を1サイクルで入手。1サイクル約15〜20分なので、時給換算で約3,000R。料理素材としても優秀なので二重の意味で有用。</div>
+          <div class="item-meta">💡 ガチロック（金イワロック）からも稀に星のかけら（300R）が落ちる。ヘブラ山頂で粘ると稼げる</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">白銀ライネル素材売り</span><span class="badge badge-S">高単価</span></div>
+          <div class="item-detail">白銀ライネルを倒すと、ライネルの角（150R）・ひづめ（100R）・肝（70R）に加え、攻撃力78の武器（売却すると100〜500R）がドロップ。1体で500〜1000R稼げる。ただし蛮族強化用に温存推奨。</div>
+          <div class="item-meta">💡 武器ドロップは耐久が減った状態でなく満タンなので、使ってから売るより新品で売るほうが高い</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">古代素材売り（古代の歯車30R/コア80R）</span><span class="badge badge-A">慣性収入</span></div>
+          <div class="item-detail">ガーディアン討伐で集まる古代素材は、必要数を確保した後の余剰分を売却。古代のコア（80R）・歯車（30R）・バネ（15R）はそれなりの値段。ただし古代兵装強化に必要なので、絶対量を確保してから売却に回すこと。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">マックスドリアン売り</span><span class="badge badge-A">フィローネ</span></div>
+          <div class="item-detail">フィローネの塔北東のマックスドリアン群生地で大量採取（1巡20〜30個）。マックスドリアン5個セットで料理にすると約75R、素材のままだと1個15R。料理にして売るほうが効率良い。</div>
+          <div class="item-meta">💡 ガノン戦の保険料理としても使えるので、売却用と保存用を分けて作っておく</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="money-panel" data-money-panel="minigame" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">雪玉ボウル（ストライクで300R）</span><span class="badge badge-S">高効率</span></div>
+          <div class="item-detail">ヘブラの塔近くのポンドの小屋前で挑戦できる。参加費20Rで、ストライクを取ると300R獲得（差し引き280R）。コツを掴めばほぼ100%ストライクできるので、慣れれば10分で2000〜3000R稼げる。序盤〜中盤の重要収入源。</div>
+          <div class="item-meta item-loc">ヘブラの塔の北西「ポンドの小屋」</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">宝箱当て（ウオトリー村）</span><span class="badge badge-A">運要素</span></div>
+          <div class="item-detail">ウオトリー村のチウハンの賭け。10R・50R・100Rの3段階で参加可能。3つの宝箱から当たりを引くと賭け金が2〜5倍に。ルピー稼ぎ目的なら100R賭けが効率良い。賭け直前にセーブし、外れたらロードのリセマラ運用が定番。</div>
+          <div class="item-meta item-loc">ウオトリー村（ラネール地方）</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">青い炎の運搬</span><span class="badge badge-A">クエスト</span></div>
+          <div class="item-detail">ハテノ古代研究所のミニチャレンジ「青い炎が見たい」。各地の青い炎を松明で運んで研究所まで届ける（消えないように雨・水に注意）。報酬として研究所のシステムが解放され、副次的にダイヤモンド入手の機会も。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">流鏑馬・かけっこ・ガンガンゴルフ</span><span class="badge badge-B">少額・楽しみ</span></div>
+          <div class="item-detail">各地のミニゲーム。流鏑馬（馬上から的に矢を当てる）、かけっこ（マラソン）、ガンガンゴルフ（鉄球を穴へ打ち込む）など。1回100〜200R程度の報酬。金策効率は低いが息抜きに。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">ミニチャレンジ報酬</span><span class="badge badge-B">確実</span></div>
+          <div class="item-detail">各地で発生するミニチャレンジ（ハシゴ村長と一座の建設、各村の依頼など）の報酬としてルピーが得られる。1個50〜500R程度だが、確実な収入。冒険ガイドから受注状況を確認できる。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="money-panel" data-money-panel="usage" style="display:none;">
+      <div class="item-grid">
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">大妖精の泉の開放（合計11,600R）</span><span class="badge badge-S">最優先</span></div>
+          <div class="item-detail">①カカリコ村裏：100R／②タバンタ（リトの馬宿近く）：500R／③アッカレ（ヒガッカレ馬宿近く）：1,000R／④ゲルド（南の馬宿近く）：10,000R。すべて開放しないと防具を★4まで強化できない。最大の使い道。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">家の購入＋家具（4,400R）</span><span class="badge badge-S">便利</span></div>
+          <div class="item-detail">ハテノ村で「幸せを運ぶ匠」のミニチャレンジから家を購入できる。家の購入3,000R＋家具1,400R。武器・盾・弓を3個ずつ展示・保管できるラックがあり、貴重な武器をなくさないように管理できる。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">馬神マーロンの泉（1,000R）</span><span class="badge badge-A">馬復活</span></div>
+          <div class="item-detail">フィローネの高原の馬宿南東にある馬神の泉に1,000Rを納めると馬を蘇らせてくれる。お気に入りの馬が死んでしまった場合の救済。一度開放すれば何度でも復活可能。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">防具屋での装備購入</span><span class="badge badge-A">序盤必須</span></div>
+          <div class="item-detail">耐寒・耐暑装備、ゾーラ装備、忍びシリーズなど、各村の防具屋で買える。一式約2,000〜3,500R程度。序盤は防具を揃えるためにルピーを温存するのが定石。</div>
+          <div class="item-meta">💡 カカリコ村の忍びシリーズ（一式約2,000R）は早めに揃えるとハイラル城武器集めが捗る</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">矢の補充</span><span class="badge badge-B">日常</span></div>
+          <div class="item-detail">各村の道具屋で矢を購入できる。木の矢（1本20R）、炎の矢・氷の矢・雷の矢（1本80〜100R）、爆弾矢（1本130R）。フロドラ周回などは矢の消費が激しいので予算に組み込む。</div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-head"><span class="item-name">マモノショップ（特殊素材）</span><span class="badge badge-B">バクチ料理用</span></div>
+          <div class="item-detail">キルトンが運営するマモノショップでマモノエキス（300R）などが買える。攻撃料理を運次第で30分維持できるバクチ用。料理素材としては角のかけらより安いが、ドラゴン素材を温存したい時に有用。</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">金策のロードマップ</div>
+      <p><strong>序盤（10,000R目標）</strong>：鉱床破壊＋イシロック狩りで装備購入の元手を稼ぐ。雪玉ボウルがアンロックされたらコンスタント収入源に。</p>
+      <p><strong>中盤（20,000R目標）</strong>：ヘブラ山でケモノ肉量産＋シチュー売り。ラメラの宝石高値買取りでまとまった収入。大妖精4箇所の開放を目指す。</p>
+      <p><strong>終盤（無限）</strong>：フロドラの角狩りor3龍周回で時給45,000R級の効率。やり込み素材集めの片手間でルピーが増え続ける。</p>
+    </div>
+
+    <div class="info-box" style="margin-top:16px;">
+      <div class="info-box-title">節約のコツ</div>
+      <p><strong>料理ポーチを活用</strong>：消費しなければ買わなくていい。ハート1個分の回復に料理を使わず、リンゴ1個で済ませる癖をつける。</p>
+      <p><strong>装備は使い回し</strong>：防寒装備は炎武器装備で代用可能、暑さは水に浸かれば耐えられる。状況によっては装備を買わずに料理で対応する。</p>
+      <p><strong>赤い月後の素材回収</strong>：赤い月で復活したフィールド素材・敵素材を効率的に回収。1巡で数百ルピー分の素材が貯まる。</p>
+    </div>
+  </section>
+
+
 </main>
 
 
@@ -1898,6 +2352,32 @@ document.querySelectorAll('[data-dragon-tab]').forEach(btn => {
     const target = btn.dataset.dragonTab;
     document.querySelectorAll('[data-dragon-panel]').forEach(panel => {
       panel.style.display = panel.dataset.dragonPanel === target ? '' : 'none';
+    });
+  });
+});
+
+
+// 敵対策セクション：タブ切替
+document.querySelectorAll('[data-enemy-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-enemy-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.dataset.enemyTab;
+    document.querySelectorAll('[data-enemy-panel]').forEach(panel => {
+      panel.style.display = panel.dataset.enemyPanel === target ? '' : 'none';
+    });
+  });
+});
+
+
+// 金策セクション：タブ切替
+document.querySelectorAll('[data-money-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-money-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.dataset.moneyTab;
+    document.querySelectorAll('[data-money-panel]').forEach(panel => {
+      panel.style.display = panel.dataset.moneyPanel === target ? '' : 'none';
     });
   });
 });
